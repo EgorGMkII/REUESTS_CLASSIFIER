@@ -10,11 +10,8 @@ services:
       HYDRA_API_KEY: ${HYDRA_API_KEY:-}
       HYDRA_BASE_URL: ${HYDRA_BASE_URL:-https://api.hydraai.ru/v1}
       HYDRA_MODEL: ${HYDRA_MODEL:-gpt-5-mini}
-      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
-      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-https://api.hydraai.ru/v1}
-      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-5-mini}
-      OPENAI_PREPROCESSOR_MODEL: ${OPENAI_PREPROCESSOR_MODEL:-gpt-5.4-mini}
-      OPENAI_EMBEDDING_MODEL: ${OPENAI_EMBEDDING_MODEL:-text-embedding-3-small}
+      HYDRA_PREPROCESSOR_MODEL: ${HYDRA_PREPROCESSOR_MODEL:-gpt-5.4-mini}
+      HYDRA_EMBEDDING_MODEL: ${HYDRA_EMBEDDING_MODEL:-text-embedding-3-small}
       CLASSIFIER_CORS_ORIGINS: ${CLASSIFIER_CORS_ORIGINS:-http://localhost:8009,http://127.0.0.1:8009}
     volumes:
       - ./data:/app/data

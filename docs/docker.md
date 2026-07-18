@@ -11,9 +11,7 @@
 Copy-Item .env.example .env
 ```
 
-В `.env` указать реальный `OPENAI_API_KEY`.
-Для текущего OCR/API-релиза предпочтительно указывать `HYDRA_API_KEY`.
-`OPENAI_API_KEY` можно оставить пустым, если используется тот же ключ Hydra.
+В `.env` указать реальный `HYDRA_API_KEY`.
 
 Минимальный `.env`:
 
@@ -21,11 +19,8 @@ Copy-Item .env.example .env
 HYDRA_API_KEY=...
 HYDRA_BASE_URL=https://api.hydraai.ru/v1
 HYDRA_MODEL=gpt-5-mini
-
-OPENAI_BASE_URL=https://api.hydraai.ru/v1
-OPENAI_MODEL=gpt-5-mini
-OPENAI_PREPROCESSOR_MODEL=gpt-5.4-mini
-OPENAI_EMBEDDING_MODEL=text-embedding-3-small
+HYDRA_PREPROCESSOR_MODEL=gpt-5.4-mini
+HYDRA_EMBEDDING_MODEL=text-embedding-3-small
 ```
 
 ## Запуск
@@ -62,10 +57,10 @@ http://127.0.0.1:8009/ready
 
 ## Модели
 
-- `HYDRA_MODEL` — модель для OCR PDF через vision API. По умолчанию `gpt-5-mini`.
-- `OPENAI_MODEL` — основная модель для классификаторов. По умолчанию `gpt-5-mini`.
-- `OPENAI_PREPROCESSOR_MODEL` — более сильная модель для `LLMTextPreprocessor`.
+- `HYDRA_MODEL` — основная модель для OCR PDF и классификаторов. По умолчанию `gpt-5-mini`.
+- `HYDRA_PREPROCESSOR_MODEL` — более сильная модель для `LLMTextPreprocessor`.
   По умолчанию `gpt-5.4-mini`.
+- `HYDRA_EMBEDDING_MODEL` — модель embeddings. По умолчанию `text-embedding-3-small`.
 
-Если нужно удешевить запуск, можно поставить `OPENAI_PREPROCESSOR_MODEL=gpt-5-mini`,
+Если нужно удешевить запуск, можно поставить `HYDRA_PREPROCESSOR_MODEL=gpt-5-mini`,
 но качество retrieval-запросов может просесть.

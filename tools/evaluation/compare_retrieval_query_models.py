@@ -420,13 +420,12 @@ def main() -> int:
     from src.classification.text_preprocessor import LLMTextPreprocessor
 
     args = _parser().parse_args()
-    api_key = args.api_key or os.getenv("HYDRA_API_KEY") or os.getenv("OPENAI_API_KEY")
+    api_key = args.api_key or os.getenv("HYDRA_API_KEY")
     if not api_key:
-        raise SystemExit("HYDRA_API_KEY or OPENAI_API_KEY is not set")
+        raise SystemExit("HYDRA_API_KEY is not set")
     base_url = (
         args.base_url
         or os.getenv("HYDRA_BASE_URL")
-        or os.getenv("OPENAI_BASE_URL")
         or "https://api.hydraai.ru/v1"
     ).rstrip("/")
 

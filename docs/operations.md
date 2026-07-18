@@ -18,13 +18,11 @@ python -m pip install -r requirements.txt
 $env:HYDRA_API_KEY="..."
 $env:HYDRA_BASE_URL="https://api.hydraai.ru/v1"
 $env:HYDRA_MODEL="gpt-5-mini"
-$env:OPENAI_BASE_URL="https://api.hydraai.ru/v1"
-$env:OPENAI_MODEL="gpt-5-mini"
-$env:OPENAI_PREPROCESSOR_MODEL="gpt-5.4-mini"
-$env:OPENAI_EMBEDDING_MODEL="text-embedding-3-small"
+$env:HYDRA_PREPROCESSOR_MODEL="gpt-5.4-mini"
+$env:HYDRA_EMBEDDING_MODEL="text-embedding-3-small"
 ```
 
-`OPENAI_MODEL` используется основными классификаторами. `OPENAI_PREPROCESSOR_MODEL`
+`HYDRA_MODEL` используется OCR и основными классификаторами. `HYDRA_PREPROCESSOR_MODEL`
 используется только для `LLMTextPreprocessor`, который готовит `decisionText`,
 `typeDecisionText` и retrieval queries. Это позволяет оставить основной контур
 на более дешёвой модели, а генерацию retrieval-запросов выполнять более сильной
@@ -96,8 +94,8 @@ python -m src.classification.pipeline \
 Текущий рабочий baseline для полного pipeline:
 
 ```powershell
-$env:OPENAI_MODEL="gpt-5-mini"
-$env:OPENAI_PREPROCESSOR_MODEL="gpt-5.4-mini"
+$env:HYDRA_MODEL="gpt-5-mini"
+$env:HYDRA_PREPROCESSOR_MODEL="gpt-5.4-mini"
 ```
 
 ```bash

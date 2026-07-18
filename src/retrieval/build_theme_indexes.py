@@ -6,7 +6,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from llm_module import OPENAI_EMBEDDING_MODEL
+from llm_module import HYDRA_EMBEDDING_MODEL
 
 from .bm25_retriever import BM25ThemeRetriever
 from .faiss_retriever import FaissThemeRetriever
@@ -71,7 +71,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--themes", type=Path, required=True)
     parser.add_argument("--out-dir", type=Path, required=True)
     parser.add_argument(
-        "--embedding-model", default=OPENAI_EMBEDDING_MODEL
+        "--embedding-model", default=HYDRA_EMBEDDING_MODEL
     )
     parser.add_argument(
         "--use-openai-embeddings",

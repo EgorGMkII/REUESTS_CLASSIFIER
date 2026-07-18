@@ -41,12 +41,8 @@ class PdfClassificationService:
         self.pages_per_request = pages_per_request
         self.max_tokens = max_tokens
         self.timeout = timeout
-        self.api_key = os.getenv("HYDRA_API_KEY") or os.getenv("OPENAI_API_KEY") or ""
-        self.base_url = (
-            os.getenv("HYDRA_BASE_URL")
-            or os.getenv("OPENAI_BASE_URL")
-            or DEFAULT_HYDRA_BASE_URL
-        ).rstrip("/")
+        self.api_key = os.getenv("HYDRA_API_KEY") or ""
+        self.base_url = (os.getenv("HYDRA_BASE_URL") or DEFAULT_HYDRA_BASE_URL).rstrip("/")
         self.model = os.getenv("HYDRA_MODEL") or DEFAULT_HYDRA_MODEL
 
     def classify_pdf(self, pdf_path: Path, request_id: str) -> dict[str, Any]:
@@ -154,7 +150,7 @@ class PdfClassificationService:
             raise ApiException(
                 503,
                 "OCR_API_KEY_NOT_SET",
-                "HYDRA_API_KEY or OPENAI_API_KEY is not set",
+                "HYDRA_API_KEY is not set",
             )
 
         pages_dir = out_dir / "pages"

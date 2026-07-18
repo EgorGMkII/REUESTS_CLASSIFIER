@@ -94,17 +94,16 @@ def chunks(items: list[Path], size: int) -> list[list[Path]]:
 
 
 def api_config(args: argparse.Namespace) -> tuple[str, str, str]:
-    api_key = os.getenv("HYDRA_API_KEY") or os.getenv("OPENAI_API_KEY")
+    api_key = os.getenv("HYDRA_API_KEY")
     if not api_key:
-        raise SystemExit("HYDRA_API_KEY or OPENAI_API_KEY is not set.")
+        raise SystemExit("HYDRA_API_KEY is not set.")
 
     base_url = (
         args.base_url
         or os.getenv("HYDRA_BASE_URL")
-        or os.getenv("OPENAI_BASE_URL")
         or DEFAULT_BASE_URL
     ).rstrip("/")
-    model = args.model or os.getenv("HYDRA_MODEL") or os.getenv("OPENAI_MODEL") or DEFAULT_MODEL
+    model = args.model or os.getenv("HYDRA_MODEL") or DEFAULT_MODEL
     return api_key, base_url, model
 
 
