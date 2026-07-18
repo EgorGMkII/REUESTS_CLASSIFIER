@@ -1,6 +1,15 @@
--r requirements.txt
-
-# PDF rendering and light image preprocessing for API-based OCR.
+# Minimal runtime for Docker API.
+# Local PaddleOCR is not used in Docker; PDF OCR goes through Hydra vision API.
+pydantic>=1.10
+numpy>=1.26
+rank-bm25>=0.2.2
+faiss-cpu>=1.8
+pymorphy3>=2
+razdel>=0.5
+openai>=1
+langchain-openai>=0.2
+fastapi>=0.115
+uvicorn>=0.30
 pymupdf>=1.24
 pillow>=10
 requests>=2.32
