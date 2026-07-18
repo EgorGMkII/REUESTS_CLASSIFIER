@@ -1,0 +1,103 @@
+from __future__ import annotations
+
+from src.retrieval.theme_schema import ThemeCandidate
+
+from ._llm import LLMCallable, invoke_default_llm, parse_json_response, valid_confidence
+from .schemas import ThemePrediction
+
+
+def _top_one(candidate: ThemeCandidate) -> ThemePrediction:
+    return ThemePrediction(
+        code=candidate.code,
+        name=candidate.name,
+        confidence=0.4,
+        section=candidate.section,
+    )
+
+
+class ThemeSelector:
+    def __init__(self, llm: LLMCallable | None = None):
+        self._llm = llm or invoke_default_llm
+
+    def select(
+        self,
+        text: str,
+        candidates: list[ThemeCandidate],
+        max_themes: int = 3,
+    ) -> list[ThemePrediction]:
+        if not candidates or max_themes <= 0:
+            return []
+        candidate_lines = []
+        for rank, candidate in enumerate(candidates, 1):
+            candidate_lines.append(
+                f"{rank}. code={candidate.code}\n"
+                f"   name={candidate.name}\n"
+                f"   section={candidate.section}\n"
+                f"   path={' > '.join(candidate.path)}\n"
+                f"   retrieval_score={candidate.hybridScore:.4f}"
+            )
+        prompt = f"""Выбери тематики обращения только из кандидатов.
+
+Логика выбора:
+- Сначала определи главный предмет обращения: что именно автор просит сделать, проверить, сообщить или восстановить.
+- Верни от 1 до {max_themes} тематик. Обычно достаточно 1 темы, но не стремись искусственно сжать обращение до одной темы, если 2-3 кандидата описывают разные важные стороны одного запроса.
+- Выбирай несколько тематик, если в обращении есть несколько самостоятельных предметов или если один запрос явно находится на пересечении близких официальных тем справочника.
+- Не добавляй соседние, родственные или более общие темы "на всякий случай"; каждая выбранная тема должна быть содержательно подтверждена текстом.
+- Не выбирай узкую тему только потому, что она узкая. Узкая leaf-тема подходит только если она точно описывает главный предмет обращения.
+- Если узкая тема относится к соседнему предмету, а более общая/другая тема точнее описывает суть обращения, выбирай более точную по смыслу, а не более узкую по дереву.
+- Если нужная тема есть в path кандидата, но leaf-кандидат про другой предмет, выбирай leaf по смыслу обращения, а не родительский путь.
+- Для запросов информации выбирай тему предмета информации, а не общую тему "предоставление ответа", если автор спрашивает про конкретную сферу.
+- Для коррупции выбирай коррупционную тему только если текст прямо говорит о взятке, подкупе, незаконном вознаграждении, конфликте интересов или коррупционных действиях.
+
+Few-shot ориентиры:
+- "Автобус маршрута не остановился на остановке, пассажир просит разобраться" -> выбрать одну тему про транспортное обслуживание населения / пассажирские перевозки. Не добавлять общие темы про дороги, безопасность или социальные услуги.
+- "Работникам подрядчика задерживают заработную плату" -> выбрать тему про оплату труда / трудовые права, даже если место работы — завод или стройка. Не выбирать темы промышленности или строительства, если предмет обращения именно зарплата.
+- "Фермеры сообщают о массовом забое коров и изъятии скота" -> выбрать тему про животноводство, если она есть среди кандидатов. Не добавлять соседние темы про сельскохозяйственную продукцию, ветеринарный контроль или экономику в целом без отдельного самостоятельного требования.
+- "Инвалид спрашивает о субсидии или предоставлении жилья, дом без удобств" -> выбрать жилищную тему про субсидии/предоставление жилья/жилищные условия. Не добавлять соседние темы ЖКХ, если речь не об отоплении, воде, УК или ремонте дома.
+- "СНТ сообщает о строительных отходах, загрязнении водного объекта и блокировке проезда спецслужб" -> можно выбрать несколько тем, потому что есть самостоятельные предметы: отходы/экология, дорога/проезд, возможно законность/бездействие органов.
+- "Автор просит сведения о правовых основаниях вселения в муниципальную квартиру" -> выбрать тему предмета сведений: муниципальный жилищный фонд или жилищные права. Не выбирать общую тему про порядок рассмотрения обращений.
+- "В тексте много ссылок на прокуратуру, преступления и Конституцию, но основной предмет — забой скота" -> выбирать сельское хозяйство/животноводство, а не прокуратуру или конституционные права, если нет отдельного требования по этим темам.
+
+Не придумывай другие коды. Верни только JSON без markdown:
+{{"themes": [{{"code": "...", "confidence": 0.0, "reason": "кратко"}}]}}
+
+Обращение:
+{text}
+
+Кандидаты:
+{chr(10).join(candidate_lines)}"""
+        by_code = {candidate.code: candidate for candidate in candidates}
+        try:
+            payload = parse_json_response(self._llm(prompt))
+            raw_themes = payload["themes"]
+            if not isinstance(raw_themes, list):
+                raise ValueError("themes must be an array")
+            selected: list[ThemePrediction] = []
+            seen: set[str] = set()
+            for raw in raw_themes:
+                if not isinstance(raw, dict):
+                    continue
+                code = str(raw.get("code", ""))
+                if code in seen or code not in by_code:
+                    continue
+                try:
+                    confidence = valid_confidence(raw.get("confidence"))
+                except (TypeError, ValueError):
+                    continue
+                candidate = by_code[code]
+                selected.append(
+                    ThemePrediction(
+                        code=code,
+                        name=candidate.name,
+                        confidence=confidence,
+                        section=candidate.section,
+                    )
+                )
+                seen.add(code)
+                if len(selected) >= max_themes:
+                    break
+            if selected:
+                return selected
+        except Exception:
+            pass
+        return [_top_one(candidates[0])]

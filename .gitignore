@@ -1,0 +1,49 @@
+# Python caches / test artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+pytest-cache-files-*/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# Local agent / Codex state
+.agents/
+.codex/
+
+# IDE / notebook noise
+.idea/
+.vscode/
+.ipynb_checkpoints/
+*.ipynb
+
+# Local OCR inputs and labeling dumps
+Обращения/
+Обращения.zip
+appeals_texts_for_labeling.txt
+ОГ вид_ тип.XLSX
+
+# Generated evaluation / OCR / upload artifacts
+data/evaluation/runs/
+data/evaluation/ocr_runs/
+data/evaluation/hydra_ocr_runs/
+data/evaluation/retrieval_query_model_compare/
+data/web_uploads/
+tools/ocr_lab/runs/
+
+# Temporary Office lock files
+~$*
+
+# OS junk
+.DS_Store
+Thumbs.db

@@ -1,0 +1,10 @@
+{
+  "themesCount": 1220,
+  "embeddingModel": "text-embedding-3-small",
+  "bm25IndexPath": "data\\indexes\\themes\\bm25.pkl",
+  "faissIndexPath": "data\\indexes\\themes\\faiss.index",
+  "embeddingsPath": "data\\indexes\\themes\\embeddings.npy",
+  "metadataPath": "data\\indexes\\themes\\metadata.json",
+  "themesSha256": "f07717a0b6dc069b8195d0e00c38e0ac29fa5940256666096c85a16ca4c2295b",
+  "createdAt": "2026-07-10T14:36:27.427578Z"
+}

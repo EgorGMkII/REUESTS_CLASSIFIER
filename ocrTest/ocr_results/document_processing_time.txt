@@ -1,0 +1,619 @@
+/Users/victoria/miniforge3_new/envs/ocrTest/bin/python /Applications/PyCharm CE.app/Contents/plugins/python-ce/helpers/pydev/pydevd.py --multiprocess --qt-support=auto --client 127.0.0.1 --port 56128 --file /Users/victoria/PycharmProjects/ocrTest/main.py
+Connected to pydev debugger (build 232.10072.31)
+/Users/victoria/miniforge3_new/envs/ocrTest/lib/python3.11/site-packages/paddle/utils/cpp_extension/extension_utils.py:718: UserWarning: No ccache found. Please be aware that recompiling all source files may be required. You can download and install ccache from: https://github.com/ccache/ccache/blob/master/doc/INSTALL.md
+  warnings.warn(warning_message)
+Creating model: ('PP-OCRv5_server_det', None, None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/victoria/.paddlex/official_models/PP-OCRv5_server_det`.
+Creating model: ('eslav_PP-OCRv5_mobile_rec', None, None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/victoria/.paddlex/official_models/eslav_PP-OCRv5_mobile_rec`.
+2026-06-19 17:34:45,404 | INFO | START PDF: 9.pdf
+2026-06-19 17:34:45,405 | INFO | Processing page 1/9
+2026-06-19 17:34:45,439 | INFO | [9.pdf] Page 1: render time = 0.034s
+2026-06-19 17:34:56,701 | INFO | [9.pdf] Page 1: OCR time = 11.262s
+2026-06-19 17:34:56,704 | INFO | [9.pdf] Page 1 done in 11.295s
+2026-06-19 17:34:56,705 | INFO | Processing page 2/9
+2026-06-19 17:34:56,735 | INFO | [9.pdf] Page 2: render time = 0.031s
+2026-06-19 17:35:23,479 | INFO | [9.pdf] Page 2: OCR time = 26.743s
+2026-06-19 17:35:23,483 | INFO | [9.pdf] Page 2 done in 26.774s
+2026-06-19 17:35:23,483 | INFO | Processing page 3/9
+2026-06-19 17:35:23,515 | INFO | [9.pdf] Page 3: render time = 0.032s
+2026-06-19 17:35:54,859 | INFO | [9.pdf] Page 3: OCR time = 31.343s
+2026-06-19 17:35:54,864 | INFO | [9.pdf] Page 3 done in 31.375s
+2026-06-19 17:35:54,864 | INFO | Processing page 4/9
+2026-06-19 17:35:54,896 | INFO | [9.pdf] Page 4: render time = 0.032s
+2026-06-19 17:36:25,902 | INFO | [9.pdf] Page 4: OCR time = 31.005s
+2026-06-19 17:36:25,906 | INFO | [9.pdf] Page 4 done in 31.037s
+2026-06-19 17:36:25,906 | INFO | Processing page 5/9
+2026-06-19 17:36:25,938 | INFO | [9.pdf] Page 5: render time = 0.031s
+2026-06-19 17:37:02,462 | INFO | [9.pdf] Page 5: OCR time = 36.524s
+2026-06-19 17:37:02,468 | INFO | [9.pdf] Page 5 done in 36.555s
+2026-06-19 17:37:02,468 | INFO | Processing page 6/9
+2026-06-19 17:37:02,500 | INFO | [9.pdf] Page 6: render time = 0.032s
+2026-06-19 17:37:36,198 | INFO | [9.pdf] Page 6: OCR time = 33.698s
+2026-06-19 17:37:36,203 | INFO | [9.pdf] Page 6 done in 33.730s
+2026-06-19 17:37:36,203 | INFO | Processing page 7/9
+2026-06-19 17:37:36,236 | INFO | [9.pdf] Page 7: render time = 0.032s
+2026-06-19 17:38:16,178 | INFO | [9.pdf] Page 7: OCR time = 39.942s
+2026-06-19 17:38:16,185 | INFO | [9.pdf] Page 7 done in 39.974s
+2026-06-19 17:38:16,185 | INFO | Processing page 8/9
+2026-06-19 17:38:16,217 | INFO | [9.pdf] Page 8: render time = 0.032s
+2026-06-19 17:38:53,266 | INFO | [9.pdf] Page 8: OCR time = 37.048s
+2026-06-19 17:38:53,272 | INFO | [9.pdf] Page 8 done in 37.081s
+2026-06-19 17:38:53,272 | INFO | Processing page 9/9
+2026-06-19 17:38:53,331 | INFO | [9.pdf] Page 9: render time = 0.057s
+2026-06-19 17:39:06,967 | INFO | [9.pdf] Page 9: OCR time = 13.636s
+2026-06-19 17:39:06,969 | INFO | [9.pdf] Page 9 done in 13.693s
+2026-06-19 17:39:20,691 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 17:39:20,725 | INFO | LLM processing time for 9.pdf: 13.76s
+2026-06-19 17:39:34,168 | INFO | FINISHED PDF: 9.pdf | pages=9 | total_time=288.76s | avg_page=29.06s | question_type_prediction={'label': 3, 'label_name': 'Жалоба', 'confidence': 0.95, 'reason': 'Текст содержит коллективное обращение с обвинениями в незаконных действиях властей, нарушениях прав граждан и просьбой о проверке и наказании виновных, что соответствует жалобе.'}
+2026-06-19 17:39:34,168 | INFO | Saved: ocr_results/9.txt
+2026-06-19 17:39:34,169 | INFO | START PDF: 8.pdf
+2026-06-19 17:39:34,171 | INFO | Processing page 1/11
+2026-06-19 17:39:34,220 | INFO | [8.pdf] Page 1: render time = 0.048s
+2026-06-19 17:39:45,936 | INFO | [8.pdf] Page 1: OCR time = 11.715s
+2026-06-19 17:39:45,938 | INFO | [8.pdf] Page 1 done in 11.763s
+2026-06-19 17:39:45,938 | INFO | Processing page 2/11
+2026-06-19 17:39:45,972 | INFO | [8.pdf] Page 2: render time = 0.034s
+2026-06-19 17:39:52,712 | INFO | [8.pdf] Page 2: OCR time = 6.740s
+2026-06-19 17:39:52,714 | INFO | [8.pdf] Page 2 done in 6.774s
+2026-06-19 17:39:52,714 | INFO | Processing page 3/11
+2026-06-19 17:39:52,749 | INFO | [8.pdf] Page 3: render time = 0.035s
+2026-06-19 17:40:19,534 | INFO | [8.pdf] Page 3: OCR time = 26.785s
+2026-06-19 17:40:19,538 | INFO | [8.pdf] Page 3 done in 26.820s
+2026-06-19 17:40:19,538 | INFO | Processing page 4/11
+2026-06-19 17:40:19,573 | INFO | [8.pdf] Page 4: render time = 0.035s
+2026-06-19 17:40:50,923 | INFO | [8.pdf] Page 4: OCR time = 31.349s
+2026-06-19 17:40:50,928 | INFO | [8.pdf] Page 4 done in 31.384s
+2026-06-19 17:40:50,928 | INFO | Processing page 5/11
+2026-06-19 17:40:50,961 | INFO | [8.pdf] Page 5: render time = 0.033s
+2026-06-19 17:41:24,867 | INFO | [8.pdf] Page 5: OCR time = 33.905s
+2026-06-19 17:41:24,871 | INFO | [8.pdf] Page 5 done in 33.939s
+2026-06-19 17:41:24,871 | INFO | Processing page 6/11
+2026-06-19 17:41:24,905 | INFO | [8.pdf] Page 6: render time = 0.033s
+2026-06-19 17:41:59,837 | INFO | [8.pdf] Page 6: OCR time = 34.932s
+2026-06-19 17:41:59,843 | INFO | [8.pdf] Page 6 done in 34.965s
+2026-06-19 17:41:59,843 | INFO | Processing page 7/11
+2026-06-19 17:41:59,878 | INFO | [8.pdf] Page 7: render time = 0.034s
+2026-06-19 17:42:33,938 | INFO | [8.pdf] Page 7: OCR time = 34.060s
+2026-06-19 17:42:33,943 | INFO | [8.pdf] Page 7 done in 34.094s
+2026-06-19 17:42:33,943 | INFO | Processing page 8/11
+2026-06-19 17:42:33,977 | INFO | [8.pdf] Page 8: render time = 0.034s
+2026-06-19 17:43:12,557 | INFO | [8.pdf] Page 8: OCR time = 38.579s
+2026-06-19 17:43:12,564 | INFO | [8.pdf] Page 8 done in 38.613s
+2026-06-19 17:43:12,564 | INFO | Processing page 9/11
+2026-06-19 17:43:12,597 | INFO | [8.pdf] Page 9: render time = 0.033s
+2026-06-19 17:43:47,143 | INFO | [8.pdf] Page 9: OCR time = 34.545s
+2026-06-19 17:43:47,148 | INFO | [8.pdf] Page 9 done in 34.578s
+2026-06-19 17:43:47,148 | INFO | Processing page 10/11
+2026-06-19 17:43:47,203 | INFO | [8.pdf] Page 10: render time = 0.053s
+2026-06-19 17:44:00,908 | INFO | [8.pdf] Page 10: OCR time = 13.704s
+2026-06-19 17:44:00,909 | INFO | [8.pdf] Page 10 done in 13.758s
+2026-06-19 17:44:00,909 | INFO | Processing page 11/11
+2026-06-19 17:44:00,935 | INFO | [8.pdf] Page 11: render time = 0.026s
+2026-06-19 17:44:05,738 | INFO | [8.pdf] Page 11: OCR time = 4.802s
+2026-06-19 17:44:05,738 | INFO | [8.pdf] Page 11 done in 4.828s
+2026-06-19 17:44:22,733 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 17:44:22,741 | INFO | LLM processing time for 8.pdf: 17.00s
+2026-06-19 17:44:22,744 | INFO | FINISHED PDF: 8.pdf | pages=11 | total_time=288.57s | avg_page=24.68s | question_type_prediction={'label': 3, 'label_name': 'Жалоба', 'confidence': 0.95, 'reason': 'Текст содержит подробное описание нарушений прав граждан, незаконных действий должностных лиц, массового изъятия и уничтожения скота, выражение недовольства и просьбы о проверках и наказании виновных, что соответствует жалобе.'}
+2026-06-19 17:44:22,744 | INFO | Saved: ocr_results/8.txt
+2026-06-19 17:44:22,744 | INFO | START PDF: 16.pdf
+2026-06-19 17:44:22,749 | INFO | Processing page 1/7
+2026-06-19 17:44:22,807 | INFO | [16.pdf] Page 1: render time = 0.056s
+2026-06-19 17:44:31,534 | INFO | [16.pdf] Page 1: OCR time = 8.727s
+2026-06-19 17:44:31,535 | INFO | [16.pdf] Page 1 done in 8.782s
+2026-06-19 17:44:31,535 | INFO | Processing page 2/7
+2026-06-19 17:44:31,562 | INFO | [16.pdf] Page 2: render time = 0.027s
+2026-06-19 17:44:40,689 | INFO | [16.pdf] Page 2: OCR time = 9.126s
+2026-06-19 17:44:40,691 | INFO | [16.pdf] Page 2 done in 9.153s
+2026-06-19 17:44:40,691 | INFO | Processing page 3/7
+2026-06-19 17:44:40,723 | INFO | [16.pdf] Page 3: render time = 0.031s
+2026-06-19 17:45:00,363 | INFO | [16.pdf] Page 3: OCR time = 19.640s
+2026-06-19 17:45:00,365 | INFO | [16.pdf] Page 3 done in 19.671s
+2026-06-19 17:45:00,365 | INFO | Processing page 4/7
+2026-06-19 17:45:00,396 | INFO | [16.pdf] Page 4: render time = 0.031s
+2026-06-19 17:45:11,160 | INFO | [16.pdf] Page 4: OCR time = 10.763s
+2026-06-19 17:45:11,162 | INFO | [16.pdf] Page 4 done in 10.794s
+2026-06-19 17:45:11,162 | INFO | Processing page 5/7
+2026-06-19 17:45:11,197 | INFO | [16.pdf] Page 5: render time = 0.035s
+2026-06-19 17:45:23,718 | INFO | [16.pdf] Page 5: OCR time = 12.521s
+2026-06-19 17:45:23,720 | INFO | [16.pdf] Page 5 done in 12.556s
+2026-06-19 17:45:23,720 | INFO | Processing page 6/7
+2026-06-19 17:45:23,750 | INFO | [16.pdf] Page 6: render time = 0.030s
+2026-06-19 17:45:41,762 | INFO | [16.pdf] Page 6: OCR time = 18.012s
+2026-06-19 17:45:41,765 | INFO | [16.pdf] Page 6 done in 18.042s
+2026-06-19 17:45:41,765 | INFO | Processing page 7/7
+2026-06-19 17:45:41,790 | INFO | [16.pdf] Page 7: render time = 0.025s
+2026-06-19 17:45:50,626 | INFO | [16.pdf] Page 7: OCR time = 8.836s
+2026-06-19 17:45:50,627 | INFO | [16.pdf] Page 7 done in 8.861s
+2026-06-19 17:46:04,978 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 17:46:04,984 | INFO | LLM processing time for 16.pdf: 14.36s
+2026-06-19 17:46:04,986 | INFO | FINISHED PDF: 16.pdf | pages=7 | total_time=102.24s | avg_page=12.55s | question_type_prediction={'label': 2, 'label_name': 'Заявление', 'confidence': 0.95, 'reason': 'Текст содержит официальное обращение с изложением проблемы и просьбой о помощи, что характерно для заявления.'}
+2026-06-19 17:46:04,986 | INFO | Saved: ocr_results/16.txt
+2026-06-19 17:46:04,986 | INFO | START PDF: 17.pdf
+2026-06-19 17:46:04,990 | INFO | Processing page 1/4
+2026-06-19 17:46:05,057 | INFO | [17.pdf] Page 1: render time = 0.065s
+2026-06-19 17:46:20,715 | INFO | [17.pdf] Page 1: OCR time = 15.657s
+2026-06-19 17:46:20,717 | INFO | [17.pdf] Page 1 done in 15.722s
+2026-06-19 17:46:20,717 | INFO | Processing page 2/4
+2026-06-19 17:46:20,741 | INFO | [17.pdf] Page 2: render time = 0.024s
+2026-06-19 17:46:28,582 | INFO | [17.pdf] Page 2: OCR time = 7.841s
+2026-06-19 17:46:28,583 | INFO | [17.pdf] Page 2 done in 7.865s
+2026-06-19 17:46:28,583 | INFO | Processing page 3/4
+2026-06-19 17:46:28,621 | INFO | [17.pdf] Page 3: render time = 0.037s
+2026-06-19 17:46:38,165 | INFO | [17.pdf] Page 3: OCR time = 9.544s
+2026-06-19 17:46:38,166 | INFO | [17.pdf] Page 3 done in 9.581s
+2026-06-19 17:46:38,166 | INFO | Processing page 4/4
+2026-06-19 17:46:38,196 | INFO | [17.pdf] Page 4: render time = 0.030s
+2026-06-19 17:46:40,750 | INFO | [17.pdf] Page 4: OCR time = 2.554s
+2026-06-19 17:46:40,750 | INFO | [17.pdf] Page 4 done in 2.584s
+2026-06-19 17:46:48,762 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 17:46:48,768 | INFO | LLM processing time for 17.pdf: 8.02s
+2026-06-19 17:46:48,771 | INFO | FINISHED PDF: 17.pdf | pages=4 | total_time=43.78s | avg_page=8.94s | question_type_prediction={'label': 5, 'label_name': 'Запрос информации', 'confidence': 0.95, 'reason': 'Текст содержит просьбу предоставить информацию о правомерности отказа и о том, куда обращаться за помощью в сложившейся ситуации.'}
+2026-06-19 17:46:48,771 | INFO | Saved: ocr_results/17.txt
+2026-06-19 17:46:48,772 | INFO | START PDF: 15.pdf
+2026-06-19 17:46:48,775 | INFO | Processing page 1/27
+2026-06-19 17:46:48,842 | INFO | [15.pdf] Page 1: render time = 0.060s
+2026-06-19 17:47:01,638 | INFO | [15.pdf] Page 1: OCR time = 12.796s
+2026-06-19 17:47:01,640 | INFO | [15.pdf] Page 1 done in 12.856s
+2026-06-19 17:47:01,640 | INFO | Processing page 2/27
+2026-06-19 17:47:01,671 | INFO | [15.pdf] Page 2: render time = 0.030s
+2026-06-19 17:47:15,905 | INFO | [15.pdf] Page 2: OCR time = 14.234s
+2026-06-19 17:47:15,908 | INFO | [15.pdf] Page 2 done in 14.265s
+2026-06-19 17:47:15,908 | INFO | Processing page 3/27
+2026-06-19 17:47:15,937 | INFO | [15.pdf] Page 3: render time = 0.030s
+2026-06-19 17:47:33,478 | INFO | [15.pdf] Page 3: OCR time = 17.540s
+2026-06-19 17:47:33,481 | INFO | [15.pdf] Page 3 done in 17.570s
+2026-06-19 17:47:33,481 | INFO | Processing page 4/27
+2026-06-19 17:47:33,511 | INFO | [15.pdf] Page 4: render time = 0.029s
+2026-06-19 17:47:49,743 | INFO | [15.pdf] Page 4: OCR time = 16.232s
+2026-06-19 17:47:49,745 | INFO | [15.pdf] Page 4 done in 16.261s
+2026-06-19 17:47:49,745 | INFO | Processing page 5/27
+2026-06-19 17:47:49,775 | INFO | [15.pdf] Page 5: render time = 0.030s
+2026-06-19 17:48:06,967 | INFO | [15.pdf] Page 5: OCR time = 17.191s
+2026-06-19 17:48:06,970 | INFO | [15.pdf] Page 5 done in 17.221s
+2026-06-19 17:48:06,970 | INFO | Processing page 6/27
+2026-06-19 17:48:07,000 | INFO | [15.pdf] Page 6: render time = 0.030s
+2026-06-19 17:48:24,594 | INFO | [15.pdf] Page 6: OCR time = 17.594s
+2026-06-19 17:48:24,597 | INFO | [15.pdf] Page 6 done in 17.623s
+2026-06-19 17:48:24,597 | INFO | Processing page 7/27
+2026-06-19 17:48:24,627 | INFO | [15.pdf] Page 7: render time = 0.028s
+2026-06-19 17:48:38,102 | INFO | [15.pdf] Page 7: OCR time = 13.475s
+2026-06-19 17:48:38,104 | INFO | [15.pdf] Page 7 done in 13.504s
+2026-06-19 17:48:38,104 | INFO | Processing page 8/27
+2026-06-19 17:48:38,136 | INFO | [15.pdf] Page 8: render time = 0.031s
+2026-06-19 17:48:53,375 | INFO | [15.pdf] Page 8: OCR time = 15.238s
+2026-06-19 17:48:53,377 | INFO | [15.pdf] Page 8 done in 15.270s
+2026-06-19 17:48:53,378 | INFO | Processing page 9/27
+2026-06-19 17:48:53,407 | INFO | [15.pdf] Page 9: render time = 0.030s
+2026-06-19 17:49:11,881 | INFO | [15.pdf] Page 9: OCR time = 18.473s
+2026-06-19 17:49:11,883 | INFO | [15.pdf] Page 9 done in 18.503s
+2026-06-19 17:49:11,883 | INFO | Processing page 10/27
+2026-06-19 17:49:11,915 | INFO | [15.pdf] Page 10: render time = 0.031s
+2026-06-19 17:49:29,221 | INFO | [15.pdf] Page 10: OCR time = 17.306s
+2026-06-19 17:49:29,223 | INFO | [15.pdf] Page 10 done in 17.337s
+2026-06-19 17:49:29,224 | INFO | Processing page 11/27
+2026-06-19 17:49:29,253 | INFO | [15.pdf] Page 11: render time = 0.029s
+2026-06-19 17:49:42,676 | INFO | [15.pdf] Page 11: OCR time = 13.423s
+2026-06-19 17:49:42,678 | INFO | [15.pdf] Page 11 done in 13.452s
+2026-06-19 17:49:42,678 | INFO | Processing page 12/27
+2026-06-19 17:49:42,710 | INFO | [15.pdf] Page 12: render time = 0.030s
+2026-06-19 17:49:58,185 | INFO | [15.pdf] Page 12: OCR time = 15.475s
+2026-06-19 17:49:58,187 | INFO | [15.pdf] Page 12 done in 15.505s
+2026-06-19 17:49:58,187 | INFO | Processing page 13/27
+2026-06-19 17:49:58,216 | INFO | [15.pdf] Page 13: render time = 0.029s
+2026-06-19 17:50:15,754 | INFO | [15.pdf] Page 13: OCR time = 17.538s
+2026-06-19 17:50:15,756 | INFO | [15.pdf] Page 13 done in 17.567s
+2026-06-19 17:50:15,756 | INFO | Processing page 14/27
+2026-06-19 17:50:15,785 | INFO | [15.pdf] Page 14: render time = 0.029s
+2026-06-19 17:50:30,182 | INFO | [15.pdf] Page 14: OCR time = 14.396s
+2026-06-19 17:50:30,183 | INFO | [15.pdf] Page 14 done in 14.425s
+2026-06-19 17:50:30,183 | INFO | Processing page 15/27
+2026-06-19 17:50:30,216 | INFO | [15.pdf] Page 15: render time = 0.032s
+2026-06-19 17:50:45,061 | INFO | [15.pdf] Page 15: OCR time = 14.845s
+2026-06-19 17:50:45,063 | INFO | [15.pdf] Page 15 done in 14.877s
+2026-06-19 17:50:45,063 | INFO | Processing page 16/27
+2026-06-19 17:50:45,094 | INFO | [15.pdf] Page 16: render time = 0.031s
+2026-06-19 17:51:03,704 | INFO | [15.pdf] Page 16: OCR time = 18.609s
+2026-06-19 17:51:03,706 | INFO | [15.pdf] Page 16 done in 18.640s
+2026-06-19 17:51:03,706 | INFO | Processing page 17/27
+2026-06-19 17:51:03,737 | INFO | [15.pdf] Page 17: render time = 0.031s
+2026-06-19 17:51:24,036 | INFO | [15.pdf] Page 17: OCR time = 20.298s
+2026-06-19 17:51:24,038 | INFO | [15.pdf] Page 17 done in 20.329s
+2026-06-19 17:51:24,038 | INFO | Processing page 18/27
+2026-06-19 17:51:24,067 | INFO | [15.pdf] Page 18: render time = 0.029s
+2026-06-19 17:51:40,690 | INFO | [15.pdf] Page 18: OCR time = 16.623s
+2026-06-19 17:51:40,692 | INFO | [15.pdf] Page 18 done in 16.651s
+2026-06-19 17:51:40,693 | INFO | Processing page 19/27
+2026-06-19 17:51:40,723 | INFO | [15.pdf] Page 19: render time = 0.030s
+2026-06-19 17:51:57,030 | INFO | [15.pdf] Page 19: OCR time = 16.307s
+2026-06-19 17:51:57,032 | INFO | [15.pdf] Page 19 done in 16.337s
+2026-06-19 17:51:57,032 | INFO | Processing page 20/27
+2026-06-19 17:51:57,059 | INFO | [15.pdf] Page 20: render time = 0.026s
+2026-06-19 17:52:08,687 | INFO | [15.pdf] Page 20: OCR time = 11.628s
+2026-06-19 17:52:08,688 | INFO | [15.pdf] Page 20 done in 11.654s
+2026-06-19 17:52:08,688 | INFO | Processing page 21/27
+2026-06-19 17:52:08,722 | INFO | [15.pdf] Page 21: render time = 0.033s
+2026-06-19 17:52:23,014 | INFO | [15.pdf] Page 21: OCR time = 14.292s
+2026-06-19 17:52:23,016 | INFO | [15.pdf] Page 21 done in 14.325s
+2026-06-19 17:52:23,016 | INFO | Processing page 22/27
+2026-06-19 17:52:23,045 | INFO | [15.pdf] Page 22: render time = 0.029s
+2026-06-19 17:52:41,164 | INFO | [15.pdf] Page 22: OCR time = 18.118s
+2026-06-19 17:52:41,166 | INFO | [15.pdf] Page 22 done in 18.148s
+2026-06-19 17:52:41,166 | INFO | Processing page 23/27
+2026-06-19 17:52:41,195 | INFO | [15.pdf] Page 23: render time = 0.029s
+2026-06-19 17:52:54,437 | INFO | [15.pdf] Page 23: OCR time = 13.241s
+2026-06-19 17:52:54,439 | INFO | [15.pdf] Page 23 done in 13.270s
+2026-06-19 17:52:54,439 | INFO | Processing page 24/27
+2026-06-19 17:52:54,470 | INFO | [15.pdf] Page 24: render time = 0.031s
+2026-06-19 17:53:05,403 | INFO | [15.pdf] Page 24: OCR time = 10.932s
+2026-06-19 17:53:05,404 | INFO | [15.pdf] Page 24 done in 10.964s
+2026-06-19 17:53:05,404 | INFO | Processing page 25/27
+2026-06-19 17:53:05,437 | INFO | [15.pdf] Page 25: render time = 0.031s
+2026-06-19 17:53:19,012 | INFO | [15.pdf] Page 25: OCR time = 13.575s
+2026-06-19 17:53:19,013 | INFO | [15.pdf] Page 25 done in 13.606s
+2026-06-19 17:53:19,013 | INFO | Processing page 26/27
+2026-06-19 17:53:19,044 | INFO | [15.pdf] Page 26: render time = 0.031s
+2026-06-19 17:53:38,233 | INFO | [15.pdf] Page 26: OCR time = 19.189s
+2026-06-19 17:53:38,235 | INFO | [15.pdf] Page 26 done in 19.219s
+2026-06-19 17:53:38,235 | INFO | Processing page 27/27
+2026-06-19 17:53:38,262 | INFO | [15.pdf] Page 27: render time = 0.026s
+2026-06-19 17:53:48,533 | INFO | [15.pdf] Page 27: OCR time = 10.271s
+2026-06-19 17:53:48,534 | INFO | [15.pdf] Page 27 done in 10.297s
+2026-06-19 17:54:04,813 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 17:54:04,817 | INFO | LLM processing time for 15.pdf: 16.28s
+2026-06-19 17:54:04,819 | INFO | FINISHED PDF: 15.pdf | pages=27 | total_time=436.04s | avg_page=15.54s | question_type_prediction={'label': 3, 'label_name': 'Жалоба', 'confidence': 0.95, 'reason': 'Текст содержит подробное коллективное обращение жителей с жалобами на качество ремонта дороги, пылевое загрязнение, угрозу здоровью и бездействие местных властей, что соответствует категории жалобы.'}
+2026-06-19 17:54:04,820 | INFO | Saved: ocr_results/15.txt
+2026-06-19 17:54:04,820 | INFO | START PDF: 14.pdf
+2026-06-19 17:54:04,823 | INFO | Processing page 1/1
+2026-06-19 17:54:04,889 | INFO | [14.pdf] Page 1: render time = 0.064s
+2026-06-19 17:54:14,072 | INFO | [14.pdf] Page 1: OCR time = 9.183s
+2026-06-19 17:54:14,073 | INFO | [14.pdf] Page 1 done in 9.247s
+2026-06-19 17:54:19,121 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 17:54:19,127 | INFO | LLM processing time for 14.pdf: 5.05s
+2026-06-19 17:54:19,130 | INFO | FINISHED PDF: 14.pdf | pages=1 | total_time=14.31s | avg_page=9.25s | question_type_prediction={'label': 2, 'label_name': 'Заявление', 'confidence': 0.95, 'reason': 'Текст содержит официальное обращение с просьбой предоставить документы и сведения, что соответствует заявлению.'}
+2026-06-19 17:54:19,130 | INFO | Saved: ocr_results/14.txt
+2026-06-19 17:54:19,130 | INFO | START PDF: 10.pdf
+2026-06-19 17:54:19,135 | INFO | Processing page 1/7
+2026-06-19 17:54:19,191 | INFO | [10.pdf] Page 1: render time = 0.055s
+2026-06-19 17:54:29,631 | INFO | [10.pdf] Page 1: OCR time = 10.440s
+2026-06-19 17:54:29,632 | INFO | [10.pdf] Page 1 done in 10.495s
+2026-06-19 17:54:29,632 | INFO | Processing page 2/7
+2026-06-19 17:54:29,661 | INFO | [10.pdf] Page 2: render time = 0.029s
+2026-06-19 17:54:44,193 | INFO | [10.pdf] Page 2: OCR time = 14.532s
+2026-06-19 17:54:44,196 | INFO | [10.pdf] Page 2 done in 14.560s
+2026-06-19 17:54:44,196 | INFO | Processing page 3/7
+2026-06-19 17:54:44,224 | INFO | [10.pdf] Page 3: render time = 0.028s
+2026-06-19 17:54:57,630 | INFO | [10.pdf] Page 3: OCR time = 13.406s
+2026-06-19 17:54:57,632 | INFO | [10.pdf] Page 3 done in 13.434s
+2026-06-19 17:54:57,632 | INFO | Processing page 4/7
+2026-06-19 17:54:57,661 | INFO | [10.pdf] Page 4: render time = 0.028s
+2026-06-19 17:55:07,456 | INFO | [10.pdf] Page 4: OCR time = 9.795s
+2026-06-19 17:55:07,458 | INFO | [10.pdf] Page 4 done in 9.823s
+2026-06-19 17:55:07,458 | INFO | Processing page 5/7
+2026-06-19 17:55:07,484 | INFO | [10.pdf] Page 5: render time = 0.026s
+2026-06-19 17:55:12,763 | INFO | [10.pdf] Page 5: OCR time = 5.279s
+2026-06-19 17:55:12,764 | INFO | [10.pdf] Page 5 done in 5.305s
+2026-06-19 17:55:12,764 | INFO | Processing page 6/7
+2026-06-19 17:55:12,791 | INFO | [10.pdf] Page 6: render time = 0.027s
+2026-06-19 17:55:21,146 | INFO | [10.pdf] Page 6: OCR time = 8.356s
+2026-06-19 17:55:21,148 | INFO | [10.pdf] Page 6 done in 8.382s
+2026-06-19 17:55:21,148 | INFO | Processing page 7/7
+2026-06-19 17:55:21,175 | INFO | [10.pdf] Page 7: render time = 0.027s
+2026-06-19 17:55:30,195 | INFO | [10.pdf] Page 7: OCR time = 9.020s
+2026-06-19 17:55:30,197 | INFO | [10.pdf] Page 7 done in 9.047s
+2026-06-19 17:55:35,549 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 17:55:35,553 | INFO | LLM processing time for 10.pdf: 5.36s
+2026-06-19 17:55:35,555 | INFO | FINISHED PDF: 10.pdf | pages=7 | total_time=76.42s | avg_page=10.15s | question_type_prediction={'label': 4, 'label_name': 'Не обращение', 'confidence': 0.9, 'reason': 'Текст представляет собой набор разрозненных фрагментов, новостных и информационных сообщений без конкретного обращения, запроса или жалобы.'}
+2026-06-19 17:55:35,556 | INFO | Saved: ocr_results/10.txt
+2026-06-19 17:55:35,556 | INFO | START PDF: 11.pdf
+2026-06-19 17:55:35,559 | INFO | Processing page 1/3
+2026-06-19 17:55:35,624 | INFO | [11.pdf] Page 1: render time = 0.063s
+2026-06-19 17:55:51,672 | INFO | [11.pdf] Page 1: OCR time = 16.047s
+2026-06-19 17:55:51,674 | INFO | [11.pdf] Page 1 done in 16.111s
+2026-06-19 17:55:51,674 | INFO | Processing page 2/3
+2026-06-19 17:55:51,698 | INFO | [11.pdf] Page 2: render time = 0.025s
+2026-06-19 17:56:03,496 | INFO | [11.pdf] Page 2: OCR time = 11.797s
+2026-06-19 17:56:03,497 | INFO | [11.pdf] Page 2 done in 11.822s
+2026-06-19 17:56:03,497 | INFO | Processing page 3/3
+2026-06-19 17:56:03,529 | INFO | [11.pdf] Page 3: render time = 0.031s
+2026-06-19 17:56:16,290 | INFO | [11.pdf] Page 3: OCR time = 12.761s
+2026-06-19 17:56:16,292 | INFO | [11.pdf] Page 3 done in 12.792s
+2026-06-19 17:56:23,045 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 17:56:23,051 | INFO | LLM processing time for 11.pdf: 6.76s
+2026-06-19 17:56:23,054 | INFO | FINISHED PDF: 11.pdf | pages=3 | total_time=47.50s | avg_page=13.57s | question_type_prediction={'label': 2, 'label_name': 'Заявление', 'confidence': 0.95, 'reason': 'Текст содержит просьбу о содействии и решении проблем, что характерно для заявления.'}
+2026-06-19 17:56:23,054 | INFO | Saved: ocr_results/11.txt
+2026-06-19 17:56:23,054 | INFO | START PDF: 13.pdf
+2026-06-19 17:56:23,061 | INFO | Processing page 1/14
+2026-06-19 17:56:23,124 | INFO | [13.pdf] Page 1: render time = 0.061s
+2026-06-19 17:56:35,963 | INFO | [13.pdf] Page 1: OCR time = 12.839s
+2026-06-19 17:56:35,965 | INFO | [13.pdf] Page 1 done in 12.900s
+2026-06-19 17:56:35,965 | INFO | Processing page 2/14
+2026-06-19 17:56:35,988 | INFO | [13.pdf] Page 2: render time = 0.023s
+2026-06-19 17:56:39,008 | INFO | [13.pdf] Page 2: OCR time = 3.020s
+2026-06-19 17:56:39,008 | INFO | [13.pdf] Page 2 done in 3.043s
+2026-06-19 17:56:39,008 | INFO | Processing page 3/14
+2026-06-19 17:56:39,040 | INFO | [13.pdf] Page 3: render time = 0.032s
+2026-06-19 17:57:03,795 | INFO | [13.pdf] Page 3: OCR time = 24.754s
+2026-06-19 17:57:03,798 | INFO | [13.pdf] Page 3 done in 24.786s
+2026-06-19 17:57:03,798 | INFO | Processing page 4/14
+2026-06-19 17:57:03,832 | INFO | [13.pdf] Page 4: render time = 0.033s
+2026-06-19 17:57:30,539 | INFO | [13.pdf] Page 4: OCR time = 26.707s
+2026-06-19 17:57:30,543 | INFO | [13.pdf] Page 4 done in 26.740s
+2026-06-19 17:57:30,543 | INFO | Processing page 5/14
+2026-06-19 17:57:30,577 | INFO | [13.pdf] Page 5: render time = 0.034s
+2026-06-19 17:57:59,290 | INFO | [13.pdf] Page 5: OCR time = 28.712s
+2026-06-19 17:57:59,293 | INFO | [13.pdf] Page 5 done in 28.746s
+2026-06-19 17:57:59,294 | INFO | Processing page 6/14
+2026-06-19 17:57:59,326 | INFO | [13.pdf] Page 6: render time = 0.032s
+2026-06-19 17:58:34,589 | INFO | [13.pdf] Page 6: OCR time = 35.263s
+2026-06-19 17:58:34,596 | INFO | [13.pdf] Page 6 done in 35.295s
+2026-06-19 17:58:34,596 | INFO | Processing page 7/14
+2026-06-19 17:58:34,630 | INFO | [13.pdf] Page 7: render time = 0.034s
+2026-06-19 17:59:17,621 | INFO | [13.pdf] Page 7: OCR time = 42.991s
+2026-06-19 17:59:17,630 | INFO | [13.pdf] Page 7 done in 43.025s
+2026-06-19 17:59:17,630 | INFO | Processing page 8/14
+2026-06-19 17:59:17,666 | INFO | [13.pdf] Page 8: render time = 0.036s
+2026-06-19 18:00:10,215 | INFO | [13.pdf] Page 8: OCR time = 52.547s
+2026-06-19 18:00:10,228 | INFO | [13.pdf] Page 8 done in 52.583s
+2026-06-19 18:00:10,228 | INFO | Processing page 9/14
+2026-06-19 18:00:10,262 | INFO | [13.pdf] Page 9: render time = 0.034s
+2026-06-19 18:00:58,266 | INFO | [13.pdf] Page 9: OCR time = 48.003s
+2026-06-19 18:00:58,277 | INFO | [13.pdf] Page 9 done in 48.037s
+2026-06-19 18:00:58,277 | INFO | Processing page 10/14
+2026-06-19 18:00:58,325 | INFO | [13.pdf] Page 10: render time = 0.047s
+2026-06-19 18:01:11,432 | INFO | [13.pdf] Page 10: OCR time = 13.106s
+2026-06-19 18:01:11,433 | INFO | [13.pdf] Page 10 done in 13.153s
+2026-06-19 18:01:11,433 | INFO | Processing page 11/14
+2026-06-19 18:01:11,459 | INFO | [13.pdf] Page 11: render time = 0.026s
+2026-06-19 18:01:14,676 | INFO | [13.pdf] Page 11: OCR time = 3.216s
+2026-06-19 18:01:14,676 | INFO | [13.pdf] Page 11 done in 3.242s
+2026-06-19 18:01:14,676 | INFO | Processing page 12/14
+2026-06-19 18:01:14,699 | INFO | [13.pdf] Page 12: render time = 0.022s
+2026-06-19 18:01:17,374 | INFO | [13.pdf] Page 12: OCR time = 2.676s
+2026-06-19 18:01:17,375 | INFO | [13.pdf] Page 12 done in 2.698s
+2026-06-19 18:01:17,375 | INFO | Processing page 13/14
+2026-06-19 18:01:17,398 | INFO | [13.pdf] Page 13: render time = 0.023s
+2026-06-19 18:01:22,321 | INFO | [13.pdf] Page 13: OCR time = 4.923s
+2026-06-19 18:01:22,322 | INFO | [13.pdf] Page 13 done in 4.946s
+2026-06-19 18:01:22,322 | INFO | Processing page 14/14
+2026-06-19 18:01:22,343 | INFO | [13.pdf] Page 14: render time = 0.022s
+2026-06-19 18:01:24,934 | INFO | [13.pdf] Page 14: OCR time = 2.591s
+2026-06-19 18:01:24,934 | INFO | [13.pdf] Page 14 done in 2.612s
+2026-06-19 18:01:36,585 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 18:01:36,589 | INFO | LLM processing time for 13.pdf: 11.65s
+2026-06-19 18:01:36,590 | INFO | FINISHED PDF: 13.pdf | pages=14 | total_time=313.53s | avg_page=21.56s | question_type_prediction={'label': 3, 'label_name': 'Жалоба', 'confidence': 0.95, 'reason': 'Текст содержит коллективное обращение с обвинениями в превышении должностных полномочий, незаконном уничтожении имущества и нарушениях прав граждан, что соответствует жалобе.'}
+2026-06-19 18:01:36,590 | INFO | Saved: ocr_results/13.txt
+2026-06-19 18:01:36,590 | INFO | START PDF: 12.pdf
+2026-06-19 18:01:36,593 | INFO | Processing page 1/3
+2026-06-19 18:01:36,634 | INFO | [12.pdf] Page 1: render time = 0.041s
+2026-06-19 18:01:48,137 | INFO | [12.pdf] Page 1: OCR time = 11.503s
+2026-06-19 18:01:48,139 | INFO | [12.pdf] Page 1 done in 11.544s
+2026-06-19 18:01:48,139 | INFO | Processing page 2/3
+2026-06-19 18:01:48,170 | INFO | [12.pdf] Page 2: render time = 0.031s
+2026-06-19 18:02:13,332 | INFO | [12.pdf] Page 2: OCR time = 25.161s
+2026-06-19 18:02:13,335 | INFO | [12.pdf] Page 2 done in 25.193s
+2026-06-19 18:02:13,335 | INFO | Processing page 3/3
+2026-06-19 18:02:13,359 | INFO | [12.pdf] Page 3: render time = 0.024s
+2026-06-19 18:02:21,403 | INFO | [12.pdf] Page 3: OCR time = 8.043s
+2026-06-19 18:02:21,404 | INFO | [12.pdf] Page 3 done in 8.068s
+2026-06-19 18:02:29,301 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 18:02:29,305 | INFO | LLM processing time for 12.pdf: 7.90s
+2026-06-19 18:02:29,308 | INFO | FINISHED PDF: 12.pdf | pages=3 | total_time=52.72s | avg_page=14.93s | question_type_prediction={'label': 3, 'label_name': 'Жалоба', 'confidence': 0.95, 'reason': 'Текст содержит описание нарушения прав заявителя и просьбу принять меры по устранению нарушений, что характерно для жалобы.'}
+2026-06-19 18:02:29,308 | INFO | Saved: ocr_results/12.txt
+2026-06-19 18:02:29,308 | INFO | START PDF: 20.pdf
+2026-06-19 18:02:29,312 | INFO | Processing page 1/4
+2026-06-19 18:02:29,361 | INFO | [20.pdf] Page 1: render time = 0.049s
+2026-06-19 18:02:39,344 | INFO | [20.pdf] Page 1: OCR time = 9.982s
+2026-06-19 18:02:39,346 | INFO | [20.pdf] Page 1 done in 10.032s
+2026-06-19 18:02:39,346 | INFO | Processing page 2/4
+2026-06-19 18:02:39,376 | INFO | [20.pdf] Page 2: render time = 0.030s
+2026-06-19 18:02:52,181 | INFO | [20.pdf] Page 2: OCR time = 12.805s
+2026-06-19 18:02:52,183 | INFO | [20.pdf] Page 2 done in 12.835s
+2026-06-19 18:02:52,183 | INFO | Processing page 3/4
+2026-06-19 18:02:52,216 | INFO | [20.pdf] Page 3: render time = 0.032s
+2026-06-19 18:03:08,769 | INFO | [20.pdf] Page 3: OCR time = 16.553s
+2026-06-19 18:03:08,772 | INFO | [20.pdf] Page 3 done in 16.585s
+2026-06-19 18:03:08,772 | INFO | Processing page 4/4
+2026-06-19 18:03:08,798 | INFO | [20.pdf] Page 4: render time = 0.026s
+2026-06-19 18:03:14,154 | INFO | [20.pdf] Page 4: OCR time = 5.356s
+2026-06-19 18:03:14,155 | INFO | [20.pdf] Page 4 done in 5.382s
+2026-06-19 18:03:29,943 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 18:03:29,949 | INFO | LLM processing time for 20.pdf: 15.79s
+2026-06-19 18:03:29,951 | INFO | FINISHED PDF: 20.pdf | pages=4 | total_time=60.64s | avg_page=11.21s | question_type_prediction={'label': 3, 'label_name': 'Жалоба', 'confidence': 0.95, 'reason': 'Текст содержит жалобу на систематическое нарушение сроков предоставления коммунальной услуги горячего водоснабжения и просьбу провести проверку и принять меры.'}
+2026-06-19 18:03:29,951 | INFO | Saved: ocr_results/20.txt
+2026-06-19 18:03:29,951 | INFO | START PDF: 19.pdf
+2026-06-19 18:03:29,955 | INFO | Processing page 1/6
+2026-06-19 18:03:30,016 | INFO | [19.pdf] Page 1: render time = 0.059s
+2026-06-19 18:03:44,635 | INFO | [19.pdf] Page 1: OCR time = 14.618s
+2026-06-19 18:03:44,637 | INFO | [19.pdf] Page 1 done in 14.678s
+2026-06-19 18:03:44,637 | INFO | Processing page 2/6
+2026-06-19 18:03:44,664 | INFO | [19.pdf] Page 2: render time = 0.028s
+2026-06-19 18:04:03,696 | INFO | [19.pdf] Page 2: OCR time = 19.031s
+2026-06-19 18:04:03,698 | INFO | [19.pdf] Page 2 done in 19.059s
+2026-06-19 18:04:03,698 | INFO | Processing page 3/6
+2026-06-19 18:04:03,725 | INFO | [19.pdf] Page 3: render time = 0.027s
+2026-06-19 18:04:22,080 | INFO | [19.pdf] Page 3: OCR time = 18.354s
+2026-06-19 18:04:22,082 | INFO | [19.pdf] Page 3 done in 18.381s
+2026-06-19 18:04:22,082 | INFO | Processing page 4/6
+2026-06-19 18:04:22,115 | INFO | [19.pdf] Page 4: render time = 0.033s
+2026-06-19 18:04:29,975 | INFO | [19.pdf] Page 4: OCR time = 7.859s
+2026-06-19 18:04:29,976 | INFO | [19.pdf] Page 4 done in 7.893s
+2026-06-19 18:04:29,976 | INFO | Processing page 5/6
+2026-06-19 18:04:30,002 | INFO | [19.pdf] Page 5: render time = 0.026s
+2026-06-19 18:04:42,445 | INFO | [19.pdf] Page 5: OCR time = 12.442s
+2026-06-19 18:04:42,446 | INFO | [19.pdf] Page 5 done in 12.468s
+2026-06-19 18:04:42,446 | INFO | Processing page 6/6
+2026-06-19 18:04:42,473 | INFO | [19.pdf] Page 6: render time = 0.027s
+2026-06-19 18:04:56,065 | INFO | [19.pdf] Page 6: OCR time = 13.592s
+2026-06-19 18:04:56,067 | INFO | [19.pdf] Page 6 done in 13.619s
+2026-06-19 18:05:09,086 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 18:05:09,091 | INFO | LLM processing time for 19.pdf: 13.02s
+2026-06-19 18:05:09,093 | INFO | FINISHED PDF: 19.pdf | pages=6 | total_time=99.14s | avg_page=14.35s | question_type_prediction={'label': 3, 'label_name': 'Жалоба', 'confidence': 0.95, 'reason': 'Текст содержит жалобу на бездействие органов власти в отношении вандализма и сокрытия фактов истории, а также на несоблюдение законов и правил по охране воинского захоронения.'}
+2026-06-19 18:05:09,093 | INFO | Saved: ocr_results/19.txt
+2026-06-19 18:05:09,093 | INFO | START PDF: 18.pdf
+2026-06-19 18:05:09,096 | INFO | Processing page 1/5
+2026-06-19 18:05:09,163 | INFO | [18.pdf] Page 1: render time = 0.065s
+2026-06-19 18:05:22,028 | INFO | [18.pdf] Page 1: OCR time = 12.865s
+2026-06-19 18:05:22,029 | INFO | [18.pdf] Page 1 done in 12.930s
+2026-06-19 18:05:22,029 | INFO | Processing page 2/5
+2026-06-19 18:05:22,056 | INFO | [18.pdf] Page 2: render time = 0.027s
+2026-06-19 18:05:35,794 | INFO | [18.pdf] Page 2: OCR time = 13.738s
+2026-06-19 18:05:35,795 | INFO | [18.pdf] Page 2 done in 13.764s
+2026-06-19 18:05:35,796 | INFO | Processing page 3/5
+2026-06-19 18:05:35,823 | INFO | [18.pdf] Page 3: render time = 0.027s
+2026-06-19 18:05:48,956 | INFO | [18.pdf] Page 3: OCR time = 13.133s
+2026-06-19 18:05:48,957 | INFO | [18.pdf] Page 3 done in 13.160s
+2026-06-19 18:05:48,957 | INFO | Processing page 4/5
+2026-06-19 18:05:48,984 | INFO | [18.pdf] Page 4: render time = 0.026s
+2026-06-19 18:06:03,159 | INFO | [18.pdf] Page 4: OCR time = 14.175s
+2026-06-19 18:06:03,161 | INFO | [18.pdf] Page 4 done in 14.202s
+2026-06-19 18:06:03,161 | INFO | Processing page 5/5
+2026-06-19 18:06:03,184 | INFO | [18.pdf] Page 5: render time = 0.023s
+2026-06-19 18:06:08,192 | INFO | [18.pdf] Page 5: OCR time = 5.008s
+2026-06-19 18:06:08,193 | INFO | [18.pdf] Page 5 done in 5.031s
+2026-06-19 18:06:21,408 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 18:06:21,412 | INFO | LLM processing time for 18.pdf: 13.22s
+2026-06-19 18:06:21,414 | INFO | FINISHED PDF: 18.pdf | pages=5 | total_time=72.32s | avg_page=11.82s | question_type_prediction={'label': 3, 'label_name': 'Жалоба', 'confidence': 0.95, 'reason': 'Текст содержит подробное описание нарушений и требований по их устранению, что характерно для жалобы.'}
+2026-06-19 18:06:21,414 | INFO | Saved: ocr_results/18.txt
+2026-06-19 18:06:21,415 | INFO | START PDF: 6.pdf
+2026-06-19 18:06:21,417 | INFO | Processing page 1/1
+2026-06-19 18:06:21,447 | INFO | [6.pdf] Page 1: render time = 0.029s
+2026-06-19 18:06:29,271 | INFO | [6.pdf] Page 1: OCR time = 7.824s
+2026-06-19 18:06:29,272 | INFO | [6.pdf] Page 1 done in 7.854s
+2026-06-19 18:06:34,328 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 18:06:34,333 | INFO | LLM processing time for 6.pdf: 5.06s
+2026-06-19 18:06:34,335 | INFO | FINISHED PDF: 6.pdf | pages=1 | total_time=12.92s | avg_page=7.85s | question_type_prediction={'label': 1, 'label_name': 'Предложение', 'confidence': 0.9, 'reason': 'Текст содержит рекомендации по улучшению территории и просьбу рассмотреть вопросы, что соответствует предложению.'}
+2026-06-19 18:06:34,335 | INFO | Saved: ocr_results/6.txt
+2026-06-19 18:06:34,335 | INFO | START PDF: 7.pdf
+2026-06-19 18:06:34,338 | INFO | Processing page 1/2
+2026-06-19 18:06:34,368 | INFO | [7.pdf] Page 1: render time = 0.030s
+2026-06-19 18:06:44,717 | INFO | [7.pdf] Page 1: OCR time = 10.349s
+2026-06-19 18:06:44,720 | INFO | [7.pdf] Page 1 done in 10.378s
+2026-06-19 18:06:44,720 | INFO | Processing page 2/2
+2026-06-19 18:06:44,736 | INFO | [7.pdf] Page 2: render time = 0.016s
+2026-06-19 18:06:51,857 | INFO | [7.pdf] Page 2: OCR time = 7.121s
+2026-06-19 18:06:51,858 | INFO | [7.pdf] Page 2 done in 7.137s
+2026-06-19 18:06:56,700 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 18:06:56,703 | INFO | LLM processing time for 7.pdf: 4.84s
+2026-06-19 18:06:56,704 | INFO | FINISHED PDF: 7.pdf | pages=2 | total_time=22.37s | avg_page=8.76s | question_type_prediction={'label': 3, 'label_name': 'Жалоба', 'confidence': 0.9, 'reason': 'Текст содержит описание проблемы с автобусом и просьбу разобраться, что соответствует жалобе.'}
+2026-06-19 18:06:56,704 | INFO | Saved: ocr_results/7.txt
+2026-06-19 18:06:56,704 | INFO | START PDF: 5.pdf
+2026-06-19 18:06:56,707 | INFO | Processing page 1/3
+2026-06-19 18:06:56,767 | INFO | [5.pdf] Page 1: render time = 0.060s
+2026-06-19 18:07:06,527 | INFO | [5.pdf] Page 1: OCR time = 9.759s
+2026-06-19 18:07:06,528 | INFO | [5.pdf] Page 1 done in 9.819s
+2026-06-19 18:07:06,528 | INFO | Processing page 2/3
+2026-06-19 18:07:06,552 | INFO | [5.pdf] Page 2: render time = 0.024s
+2026-06-19 18:07:14,881 | INFO | [5.pdf] Page 2: OCR time = 8.328s
+2026-06-19 18:07:14,882 | INFO | [5.pdf] Page 2 done in 8.353s
+2026-06-19 18:07:14,882 | INFO | Processing page 3/3
+2026-06-19 18:07:14,924 | INFO | [5.pdf] Page 3: render time = 0.042s
+2026-06-19 18:07:25,117 | INFO | [5.pdf] Page 3: OCR time = 10.192s
+2026-06-19 18:07:25,118 | INFO | [5.pdf] Page 3 done in 10.234s
+2026-06-19 18:07:33,064 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 18:07:33,067 | INFO | LLM processing time for 5.pdf: 7.95s
+2026-06-19 18:07:33,069 | INFO | FINISHED PDF: 5.pdf | pages=3 | total_time=36.36s | avg_page=9.47s | question_type_prediction={'label': 7, 'label_name': 'Запрос прокуратуры', 'confidence': 0.9, 'reason': 'Текст содержит официальное обращение к заместителю Генерального прокурора с просьбой провести проверку и принять меры прокурорского реагирования.'}
+2026-06-19 18:07:33,069 | INFO | Saved: ocr_results/5.txt
+2026-06-19 18:07:33,069 | INFO | START PDF: 4.pdf
+2026-06-19 18:07:33,073 | INFO | Processing page 1/9
+2026-06-19 18:07:33,138 | INFO | [4.pdf] Page 1: render time = 0.062s
+2026-06-19 18:07:42,793 | INFO | [4.pdf] Page 1: OCR time = 9.655s
+2026-06-19 18:07:42,794 | INFO | [4.pdf] Page 1 done in 9.717s
+2026-06-19 18:07:42,794 | INFO | Processing page 2/9
+2026-06-19 18:07:42,820 | INFO | [4.pdf] Page 2: render time = 0.026s
+2026-06-19 18:07:55,307 | INFO | [4.pdf] Page 2: OCR time = 12.486s
+2026-06-19 18:07:55,309 | INFO | [4.pdf] Page 2 done in 12.512s
+2026-06-19 18:07:55,309 | INFO | Processing page 3/9
+2026-06-19 18:07:55,336 | INFO | [4.pdf] Page 3: render time = 0.028s
+2026-06-19 18:08:11,420 | INFO | [4.pdf] Page 3: OCR time = 16.083s
+2026-06-19 18:08:11,422 | INFO | [4.pdf] Page 3 done in 16.110s
+2026-06-19 18:08:11,422 | INFO | Processing page 4/9
+2026-06-19 18:08:11,449 | INFO | [4.pdf] Page 4: render time = 0.027s
+2026-06-19 18:08:28,485 | INFO | [4.pdf] Page 4: OCR time = 17.035s
+2026-06-19 18:08:28,487 | INFO | [4.pdf] Page 4 done in 17.062s
+2026-06-19 18:08:28,487 | INFO | Processing page 5/9
+2026-06-19 18:08:28,515 | INFO | [4.pdf] Page 5: render time = 0.028s
+2026-06-19 18:08:43,481 | INFO | [4.pdf] Page 5: OCR time = 14.965s
+2026-06-19 18:08:43,483 | INFO | [4.pdf] Page 5 done in 14.994s
+2026-06-19 18:08:43,483 | INFO | Processing page 6/9
+2026-06-19 18:08:43,513 | INFO | [4.pdf] Page 6: render time = 0.029s
+2026-06-19 18:08:54,645 | INFO | [4.pdf] Page 6: OCR time = 11.132s
+2026-06-19 18:08:54,646 | INFO | [4.pdf] Page 6 done in 11.161s
+2026-06-19 18:08:54,646 | INFO | Processing page 7/9
+2026-06-19 18:08:54,673 | INFO | [4.pdf] Page 7: render time = 0.027s
+2026-06-19 18:08:57,360 | INFO | [4.pdf] Page 7: OCR time = 2.686s
+2026-06-19 18:08:57,360 | INFO | [4.pdf] Page 7 done in 2.713s
+2026-06-19 18:08:57,360 | INFO | Processing page 8/9
+2026-06-19 18:08:57,385 | INFO | [4.pdf] Page 8: render time = 0.025s
+2026-06-19 18:09:00,092 | INFO | [4.pdf] Page 8: OCR time = 2.706s
+2026-06-19 18:09:00,092 | INFO | [4.pdf] Page 8 done in 2.731s
+2026-06-19 18:09:00,092 | INFO | Processing page 9/9
+2026-06-19 18:09:00,118 | INFO | [4.pdf] Page 9: render time = 0.026s
+2026-06-19 18:09:03,098 | INFO | [4.pdf] Page 9: OCR time = 2.981s
+2026-06-19 18:09:03,098 | INFO | [4.pdf] Page 9 done in 3.006s
+2026-06-19 18:09:11,898 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 18:09:11,905 | INFO | LLM processing time for 4.pdf: 8.81s
+2026-06-19 18:09:11,908 | INFO | FINISHED PDF: 4.pdf | pages=9 | total_time=98.84s | avg_page=10.00s | question_type_prediction={'label': 2, 'label_name': 'Заявление', 'confidence': 0.95, 'reason': 'Текст содержит коллективное заявление с просьбами о проверках и мерах по устранению нарушений, что соответствует заявлению.'}
+2026-06-19 18:09:11,908 | INFO | Saved: ocr_results/4.txt
+2026-06-19 18:09:11,909 | INFO | START PDF: 1.pdf
+2026-06-19 18:09:11,912 | INFO | Processing page 1/3
+2026-06-19 18:09:11,972 | INFO | [1.pdf] Page 1: render time = 0.059s
+2026-06-19 18:09:22,066 | INFO | [1.pdf] Page 1: OCR time = 10.093s
+2026-06-19 18:09:22,068 | INFO | [1.pdf] Page 1 done in 10.153s
+2026-06-19 18:09:22,068 | INFO | Processing page 2/3
+2026-06-19 18:09:22,095 | INFO | [1.pdf] Page 2: render time = 0.028s
+2026-06-19 18:09:30,807 | INFO | [1.pdf] Page 2: OCR time = 8.711s
+2026-06-19 18:09:30,808 | INFO | [1.pdf] Page 2 done in 8.739s
+2026-06-19 18:09:30,808 | INFO | Processing page 3/3
+2026-06-19 18:09:30,837 | INFO | [1.pdf] Page 3: render time = 0.029s
+2026-06-19 18:09:38,933 | INFO | [1.pdf] Page 3: OCR time = 8.096s
+2026-06-19 18:09:38,934 | INFO | [1.pdf] Page 3 done in 8.124s
+2026-06-19 18:09:44,172 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 18:09:44,179 | INFO | LLM processing time for 1.pdf: 5.24s
+2026-06-19 18:09:44,181 | INFO | FINISHED PDF: 1.pdf | pages=3 | total_time=32.27s | avg_page=9.01s | question_type_prediction={'label': 4, 'label_name': 'Не обращение', 'confidence': 0.95, 'reason': 'Текст содержит служебную информацию и автоматические уведомления, без конкретного обращения или запроса.'}
+2026-06-19 18:09:44,182 | INFO | Saved: ocr_results/1.txt
+2026-06-19 18:09:44,182 | INFO | START PDF: 3.pdf
+2026-06-19 18:09:44,186 | INFO | Processing page 1/3
+2026-06-19 18:09:44,246 | INFO | [3.pdf] Page 1: render time = 0.060s
+2026-06-19 18:10:00,082 | INFO | [3.pdf] Page 1: OCR time = 15.835s
+2026-06-19 18:10:00,084 | INFO | [3.pdf] Page 1 done in 15.895s
+2026-06-19 18:10:00,085 | INFO | Processing page 2/3
+2026-06-19 18:10:00,108 | INFO | [3.pdf] Page 2: render time = 0.024s
+2026-06-19 18:10:09,054 | INFO | [3.pdf] Page 2: OCR time = 8.945s
+2026-06-19 18:10:09,055 | INFO | [3.pdf] Page 2 done in 8.969s
+2026-06-19 18:10:09,055 | INFO | Processing page 3/3
+2026-06-19 18:10:09,087 | INFO | [3.pdf] Page 3: render time = 0.032s
+2026-06-19 18:10:22,972 | INFO | [3.pdf] Page 3: OCR time = 13.884s
+2026-06-19 18:10:22,974 | INFO | [3.pdf] Page 3 done in 13.917s
+2026-06-19 18:10:29,022 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 18:10:29,026 | INFO | LLM processing time for 3.pdf: 6.05s
+2026-06-19 18:10:29,028 | INFO | FINISHED PDF: 3.pdf | pages=3 | total_time=44.85s | avg_page=12.93s | question_type_prediction={'label': 3, 'label_name': 'Жалоба', 'confidence': 0.95, 'reason': 'Текст содержит описание проблем с назначением руководителя школы, выражение сомнений и просьбу провести проверку и защитить права, что характерно для жалобы.'}
+2026-06-19 18:10:29,028 | INFO | Saved: ocr_results/3.txt
+2026-06-19 18:10:29,028 | INFO | START PDF: 2.pdf
+2026-06-19 18:10:29,031 | INFO | Processing page 1/5
+2026-06-19 18:10:29,083 | INFO | [2.pdf] Page 1: render time = 0.051s
+2026-06-19 18:10:38,940 | INFO | [2.pdf] Page 1: OCR time = 9.857s
+2026-06-19 18:10:38,942 | INFO | [2.pdf] Page 1 done in 9.908s
+2026-06-19 18:10:38,942 | INFO | Processing page 2/5
+2026-06-19 18:10:38,967 | INFO | [2.pdf] Page 2: render time = 0.025s
+2026-06-19 18:10:49,313 | INFO | [2.pdf] Page 2: OCR time = 10.346s
+2026-06-19 18:10:49,314 | INFO | [2.pdf] Page 2 done in 10.371s
+2026-06-19 18:10:49,315 | INFO | Processing page 3/5
+2026-06-19 18:10:49,342 | INFO | [2.pdf] Page 3: render time = 0.028s
+2026-06-19 18:11:02,969 | INFO | [2.pdf] Page 3: OCR time = 13.626s
+2026-06-19 18:11:02,971 | INFO | [2.pdf] Page 3 done in 13.654s
+2026-06-19 18:11:02,971 | INFO | Processing page 4/5
+2026-06-19 18:11:03,007 | INFO | [2.pdf] Page 4: render time = 0.035s
+2026-06-19 18:11:19,795 | INFO | [2.pdf] Page 4: OCR time = 16.787s
+2026-06-19 18:11:19,797 | INFO | [2.pdf] Page 4 done in 16.822s
+2026-06-19 18:11:19,797 | INFO | Processing page 5/5
+2026-06-19 18:11:19,856 | INFO | [2.pdf] Page 5: render time = 0.057s
+2026-06-19 18:11:36,832 | INFO | [2.pdf] Page 5: OCR time = 16.975s
+2026-06-19 18:11:36,834 | INFO | [2.pdf] Page 5 done in 17.033s
+2026-06-19 18:11:43,261 | INFO | HTTP Request: POST https://api.hydraai.ru/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-19 18:11:43,265 | INFO | LLM processing time for 2.pdf: 6.43s
+2026-06-19 18:11:43,267 | INFO | FINISHED PDF: 2.pdf | pages=5 | total_time=74.24s | avg_page=13.56s | question_type_prediction={'label': 3, 'label_name': 'Жалоба', 'confidence': 0.95, 'reason': 'Текст содержит подробное описание нарушений и негативных последствий эксплуатации полигона ТБО, выражение недовольства и просьбу о вмешательстве, что характерно для жалобы.'}
+2026-06-19 18:11:43,267 | INFO | Saved: ocr_results/2.txt
+2026-06-19 18:11:43,267 | INFO | ALL DONE. TOTAL TIME = 2217.86s
+
+Process finished with exit code 0

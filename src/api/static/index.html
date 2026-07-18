@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Классификатор обращений</title>
+    <link rel="stylesheet" href="/static/styles.css?v=2" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Citizen Request Classifier</p>
+          <h1>Классификация обращения из PDF</h1>
+          <p class="muted">
+            Загрузите PDF. Сервис извлечёт текст, очистит OCR-артефакты и вернёт вид,
+            тип и тематики обращения.
+          </p>
+        </div>
+      </section>
+
+      <section class="card">
+        <form id="upload-form" class="upload">
+          <label class="file-drop">
+            <input id="pdf-file" type="file" accept="application/pdf,.pdf" required />
+            <span>Выберите PDF или перетащите файл сюда</span>
+          </label>
+          <button id="submit-button" type="submit">Классифицировать</button>
+        </form>
+      </section>
+
+      <section id="progress-card" class="card hidden">
+        <div class="progress-head">
+          <div class="spinner"></div>
+          <div>
+            <h2>Обработка</h2>
+            <p id="current-stage" class="muted">Подготовка файла...</p>
+          </div>
+        </div>
+        <ol id="stage-list" class="stages"></ol>
+      </section>
+
+      <section id="error-card" class="card error hidden"></section>
+
+      <section id="result-card" class="card hidden">
+        <h2>Итоговая классификация</h2>
+        <div id="summary" class="summary"></div>
+
+        <h3>Кандидаты</h3>
+        <div class="columns">
+          <div>
+            <h4>Вид + subtype</h4>
+            <div id="pair-candidates" class="candidate-list"></div>
+          </div>
+          <div>
+            <h4>Тематики</h4>
+            <div id="theme-candidates" class="candidate-list"></div>
+          </div>
+        </div>
+
+        <details>
+          <summary>Очищенный текст</summary>
+          <pre id="cleaned-text"></pre>
+        </details>
+      </section>
+    </main>
+
+    <script src="/static/app.js?v=2"></script>
+  </body>
+</html>
