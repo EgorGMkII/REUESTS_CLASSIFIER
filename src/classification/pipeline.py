@@ -30,8 +30,8 @@ from .text_preprocessor import (
 from .validators import validate_classification_result
 
 
-HIGH_CONFIDENCE_QUESTION_TYPE = 0.9
-LOW_ALTERNATIVE_QUESTION_TYPE = 0.6
+HIGH_CONFIDENCE_QUESTION_TYPE = 0.8
+LOW_ALTERNATIVE_QUESTION_TYPE = 0.75
 
 
 class ClassificationPipeline:
@@ -44,6 +44,7 @@ class ClassificationPipeline:
         theme_selector: ThemeSelector,
         allowed_theme_codes: set[str],
         text_preprocessor: TextPreprocessor | None = None,
+        theme_candidates_top_k: int = 30,
     ):
         self.theme_retriever = theme_retriever
         self.question_type_classifier = question_type_classifier
@@ -52,6 +53,7 @@ class ClassificationPipeline:
         self.theme_selector = theme_selector
         self.allowed_theme_codes = set(allowed_theme_codes)
         self.text_preprocessor = text_preprocessor or BasicTextPreprocessor()
+        self.theme_candidates_top_k = max(1, theme_candidates_top_k)
         self.last_candidates: list[ThemeCandidate] = []
         self.last_preprocessed_text = ""
         self.last_normalized_text = ""
@@ -61,6 +63,7 @@ class ClassificationPipeline:
         self.last_retrieval_query_candidates: list[list[ThemeCandidate]] = []
         self.last_question_pair_candidates: list[QuestionPairCandidate] = []
         self.last_question_type_candidates = []
+        self.last_theme_selector_diagnostics = None
 
     @staticmethod
     def _fallback_retrieval_queries(text: str) -> list[RetrievalQuery]:
@@ -172,14 +175,9 @@ class ClassificationPipeline:
             return False
         top_type = question_types[0]
         second_confidence = question_types[1].confidence if len(question_types) > 1 else 0.0
-        has_statement_alternative = any(
-            question_type.code == "2" for question_type in question_types[1:]
-        )
-        if top_type.code == "5" and has_statement_alternative:
-            return False
         return (
-            top_type.confidence > HIGH_CONFIDENCE_QUESTION_TYPE
-            and second_confidence < LOW_ALTERNATIVE_QUESTION_TYPE
+            top_type.confidence >= HIGH_CONFIDENCE_QUESTION_TYPE
+            and second_confidence <= LOW_ALTERNATIVE_QUESTION_TYPE
         )
 
     def run(self, text: str) -> ClassificationResult:
@@ -195,7 +193,9 @@ class ClassificationPipeline:
         normalized_type = normalize_text(type_decision_text)
         self.last_normalized_type_text = normalized_type
         self.last_retrieval_queries = self._retrieval_queries(preprocessed)
-        candidates = self._search_theme_candidates(self.last_retrieval_queries, top_k=30)
+        candidates = self._search_theme_candidates(
+            self.last_retrieval_queries, top_k=self.theme_candidates_top_k
+        )
         self.last_candidates = candidates
         question_types = self.question_type_classifier.classify_top_k(
             normalized_type, k=2
@@ -210,6 +210,9 @@ class ClassificationPipeline:
         question_type = selected_pair.question_type
         question_subtype = selected_pair.question_subtype
         selected = self.theme_selector.select(normalized, candidates, max_themes=3)
+        self.last_theme_selector_diagnostics = getattr(
+            self.theme_selector, "last_diagnostics", None
+        )
         if not selected and candidates:
             top = candidates[0]
             selected = [
@@ -242,6 +245,7 @@ def build_pipeline(
     themes_path: Path,
     index_dir: Path,
     subtypes_path: Path = DEFAULT_SUBTYPE_CATALOG_PATH,
+    theme_candidates_top_k: int = 30,
 ) -> ClassificationPipeline:
     themes = load_themes(themes_path)
     catalog = load_subtype_catalog(subtypes_path)
@@ -273,6 +277,7 @@ def build_pipeline(
         ThemeSelector(),
         {theme.code for theme in themes},
         LLMTextPreprocessor(),
+        theme_candidates_top_k=theme_candidates_top_k,
     )
 
 

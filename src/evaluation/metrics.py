@@ -35,6 +35,13 @@ def _join_names(items) -> str:
     return " | ".join(f"{item.code}: {item.name}" for item in items)
 
 
+def _join_theme_selector_items(items) -> str:
+    return " | ".join(
+        f"{item.code} {item.role}/{item.matchQuality}: {item.reason}"
+        for item in items
+    )
+
+
 def _theme_error_kind(
     expected_codes: set[str],
     predicted_codes: set[str],
@@ -98,6 +105,8 @@ def _write_classification_diagnostics(
                     "",
                     "",
                     "",
+                    "",
+                    "",
                 ]
             )
             continue
@@ -118,6 +127,15 @@ def _write_classification_diagnostics(
         pair_candidates = " ".join(
             candidate.key for candidate in record.questionPairCandidates
         )
+        theme_selected_diagnostics = ""
+        theme_rejected_diagnostics = ""
+        if record.themeSelectorDiagnostics is not None:
+            theme_selected_diagnostics = _join_theme_selector_items(
+                record.themeSelectorDiagnostics.selected
+            )
+            theme_rejected_diagnostics = _join_theme_selector_items(
+                record.themeSelectorDiagnostics.rejected
+            )
         type_candidates = " | ".join(
             f"{candidate.code} {candidate.name} {candidate.confidence:.2f}: {candidate.reason}"
             for candidate in record.questionTypeCandidates
@@ -143,6 +161,8 @@ def _write_classification_diagnostics(
                 type_decision_preview,
                 type_candidates,
                 pair_candidates,
+                theme_selected_diagnostics,
+                theme_rejected_diagnostics,
             ]
         )
 
@@ -159,6 +179,10 @@ def _write_classification_diagnostics(
         )
         if pair_candidates:
             markdown.append(f"- Pair candidates: `{pair_candidates}`")
+        if theme_selected_diagnostics:
+            markdown.append(f"- Theme selector selected: {theme_selected_diagnostics}")
+        if theme_rejected_diagnostics:
+            markdown.append(f"- Theme selector rejected: {theme_rejected_diagnostics}")
         if type_candidates:
             markdown.append(f"- Type candidates: {type_candidates}")
         if text_preview:
@@ -186,6 +210,8 @@ def _write_classification_diagnostics(
             "typeDecisionTextPreview",
             "questionTypeCandidates",
             "questionPairCandidates",
+            "themeSelectorSelected",
+            "themeSelectorRejected",
         ],
         rows,
     )

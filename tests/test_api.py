@@ -180,6 +180,10 @@ def test_pdf_classification_endpoint_uses_pdf_service():
             return {
                 "result": result,
                 "candidates": {
+                    "themeSelection": {
+                        "selected": [{"code": "theme", "role": "core"}],
+                        "rejected": [],
+                    },
                     "themes": [
                         {
                             "code": "theme",
@@ -227,6 +231,9 @@ def test_pdf_classification_endpoint_uses_pdf_service():
         assert payload["result"]["meta"]["requestId"] == "pdf-req"
         assert payload["candidates"]["questionPairs"][0]["key"] == "2|-"
         assert payload["candidates"]["themes"][0]["retrievalScore"] == 0.91
+        assert payload["candidates"]["themeSelection"]["selected"] == [
+            {"code": "theme", "role": "core"}
+        ]
         assert payload["text"]["cleanedPreview"] == "cleaned text"
 
 

@@ -138,6 +138,11 @@ def test_evaluation_cli_coordinates_components(monkeypatch, capsys):
             "out_dir": Path("output"),
             "resume": True,
             "metrics_only": False,
+            "retry_failed": False,
+            "llm_min_interval_seconds": None,
+            "llm_max_retries": None,
+            "llm_retry_seconds": None,
+            "theme_candidates_top_k": 30,
         },
     )()
 
@@ -149,9 +154,11 @@ def test_evaluation_cli_coordinates_components(monkeypatch, capsys):
         def __init__(self, pipeline):
             assert pipeline == "pipeline"
 
-        def run(self, loaded, out_dir, resume, metrics_only):
+        def run(self, loaded, out_dir, resume, metrics_only, retry_failed):
             assert loaded is dataset
             assert resume is True
+            assert metrics_only is False
+            assert retry_failed is False
             return {"successful": 5}
 
     monkeypatch.setattr(run_module, "_parser", lambda: Parser())
@@ -160,7 +167,14 @@ def test_evaluation_cli_coordinates_components(monkeypatch, capsys):
     monkeypatch.setattr(
         run_module, "load_evaluation_dataset", lambda *args: dataset
     )
-    monkeypatch.setattr(run_module, "build_pipeline", lambda *args: "pipeline")
+    def build_test_pipeline(themes, index_dir, subtypes, *, theme_candidates_top_k):
+        assert (themes, index_dir, subtypes) == (
+            arguments.themes, arguments.index_dir, arguments.subtypes
+        )
+        assert theme_candidates_top_k == 30
+        return "pipeline"
+
+    monkeypatch.setattr(run_module, "build_pipeline", build_test_pipeline)
     monkeypatch.setattr(run_module, "EvaluationRunner", Runner)
     assert run_module.main() == 0
     assert '"successful": 5' in capsys.readouterr().out

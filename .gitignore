@@ -34,6 +34,14 @@ appeals_texts_for_labeling.txt
 ОГ вид_ тип.XLSX
 
 # Generated evaluation / OCR / upload artifacts
+data/evaluation/real*.json
+ocrTest/appeals/
+ocrTest/ocr_results/
+ocrTest/.idea/
+docs/real-*-evaluation-report.*
+private-local/
+data/evaluation/test-output/*
+!data/evaluation/test-output/.gitkeep
 data/evaluation/runs/
 data/evaluation/ocr_runs/
 data/evaluation/hydra_ocr_runs/

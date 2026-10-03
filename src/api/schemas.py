@@ -88,6 +88,7 @@ class QuestionPairCandidateResponse(BaseModel):
 class ClassificationCandidateResponse(BaseModel):
     themes: list[ThemeCandidateResponse]
     questionPairs: list[QuestionPairCandidateResponse]
+    themeSelection: dict[str, Any] | None = None
 
 
 class PdfTextResponse(BaseModel):

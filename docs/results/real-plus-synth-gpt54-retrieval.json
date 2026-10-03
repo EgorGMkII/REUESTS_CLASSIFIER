@@ -1,0 +1,36 @@
+{
+  "dataset": "data\\evaluation\\real_plus_synth.json",
+  "models": [
+    "gpt-5.4-mini"
+  ],
+  "queryTopK": 30,
+  "finalTopK": 50,
+  "bm25Weight": 0.3,
+  "vectorWeight": 0.7,
+  "usage": {
+    "promptTokens": 273719,
+    "completionTokens": 24486,
+    "totalTokens": 298205
+  },
+  "metrics": {
+    "gpt-5.4-mini": {
+      "total": 30,
+      "successful": 30,
+      "failed": 0,
+      "recordsWithDiagnostics": 30,
+      "usage": {
+        "promptTokens": 273719,
+        "completionTokens": 24486,
+        "totalTokens": 298205
+      },
+      "expectedInTop1": 0.6,
+      "expectedInTop3": 0.8333333333333334,
+      "expectedInTop10": 0.9333333333333333,
+      "expectedInTop20": 0.9666666666666667,
+      "expectedInTop30": 0.9666666666666667,
+      "expectedInTop50": 1.0,
+      "meanBestRank": 3.8666666666666667,
+      "mrr": 0.7230555555555556
+    }
+  }
+}

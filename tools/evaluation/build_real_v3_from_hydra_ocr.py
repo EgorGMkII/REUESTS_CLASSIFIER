@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_INPUT = ROOT / "data" / "evaluation" / "real_v2.json"
 DEFAULT_OUTPUT = ROOT / "data" / "evaluation" / "real_v3.json"
 DEFAULT_PDF_DIR = ROOT / "Обращения"

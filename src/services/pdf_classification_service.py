@@ -199,6 +199,9 @@ class PdfClassificationService:
         return text, raw
 
     def _candidates(self) -> dict[str, Any]:
+        theme_selector_diagnostics = (
+            getattr(self.pipeline, "last_theme_selector_diagnostics", None) or {}
+        )
         theme_candidates = []
         for candidate in getattr(self.pipeline, "last_candidates", [])[:10]:
             theme_candidates.append(
@@ -228,5 +231,6 @@ class PdfClassificationService:
         pair_candidates.sort(key=lambda item: item["confidence"], reverse=True)
         return {
             "themes": theme_candidates,
+            "themeSelection": theme_selector_diagnostics,
             "questionPairs": pair_candidates[:3],
         }

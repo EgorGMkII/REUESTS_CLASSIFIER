@@ -14,6 +14,8 @@ from .schemas import (
     QuestionTypeDiagnostics,
     RetrievalDiagnostics,
     RetrievalQueryDiagnostics,
+    ThemeSelectorCandidateDiagnostics,
+    ThemeSelectorDiagnostics,
     TextDiagnostics,
 )
 
@@ -38,11 +40,12 @@ class EvaluationRunner:
     def load_records(path: Path) -> list[PredictionRecord]:
         if not path.exists():
             return []
-        records = []
+        records_by_id: dict[str, PredictionRecord] = {}
         for line in path.read_text(encoding="utf-8").splitlines():
             if line.strip():
-                records.append(PredictionRecord.model_validate_json(line))
-        return records
+                record = PredictionRecord.model_validate_json(line)
+                records_by_id[record.id] = record
+        return list(records_by_id.values())
 
     def _retrieval_diagnostics(self, case) -> RetrievalDiagnostics | None:
         candidates = getattr(self.pipeline, "last_candidates", None)
@@ -123,12 +126,52 @@ class EvaluationRunner:
             )
         return diagnostics
 
+    def _theme_selector_diagnostics(self) -> ThemeSelectorDiagnostics | None:
+        raw = getattr(self.pipeline, "last_theme_selector_diagnostics", None)
+        if not isinstance(raw, dict):
+            return None
+
+        def convert(items) -> list[ThemeSelectorCandidateDiagnostics]:
+            result: list[ThemeSelectorCandidateDiagnostics] = []
+            if not isinstance(items, list):
+                return result
+            for item in items:
+                if not isinstance(item, dict):
+                    continue
+                result.append(
+                    ThemeSelectorCandidateDiagnostics(
+                        code=str(item.get("code", "")),
+                        role=str(item.get("role", "")),
+                        matchQuality=str(item.get("matchQuality", "")),
+                        reason=str(item.get("reason", "")),
+                    )
+                )
+            return result
+
+        return ThemeSelectorDiagnostics(
+            selected=convert(raw.get("selected")),
+            rejected=convert(raw.get("rejected")),
+        )
+
+    def _reset_pipeline_diagnostics(self) -> None:
+        self.pipeline.last_candidates = []
+        self.pipeline.last_preprocessed_text = ""
+        self.pipeline.last_normalized_text = ""
+        self.pipeline.last_type_decision_text = ""
+        self.pipeline.last_normalized_type_text = ""
+        self.pipeline.last_retrieval_queries = []
+        self.pipeline.last_retrieval_query_candidates = []
+        self.pipeline.last_question_pair_candidates = []
+        self.pipeline.last_question_type_candidates = []
+        self.pipeline.last_theme_selector_diagnostics = None
+
     def run(
         self,
         dataset: EvaluationDataset,
         out_dir: Path,
         resume: bool = False,
         metrics_only: bool = False,
+        retry_failed: bool = False,
     ) -> dict:
         out_dir.mkdir(parents=True, exist_ok=True)
         predictions_path = out_dir / "predictions.jsonl"
@@ -138,11 +181,17 @@ class EvaluationRunner:
                 raise FileExistsError(
                     f"{predictions_path} exists; use --resume or a new output directory"
                 )
-            completed = {record.id for record in records}
+            records_by_id = {record.id: record for record in records}
+            completed = {
+                record.id
+                for record in records_by_id.values()
+                if not (retry_failed and record.error)
+            }
             with predictions_path.open("a", encoding="utf-8") as stream:
                 for case in dataset.cases:
                     if case.id in completed:
                         continue
+                    self._reset_pipeline_diagnostics()
                     started = time.perf_counter()
                     try:
                         prediction = self.pipeline.run(case.text)
@@ -155,6 +204,7 @@ class EvaluationRunner:
                             textDiagnostics=self._text_diagnostics(case.text),
                             questionTypeCandidates=self._question_type_diagnostics(),
                             questionPairCandidates=self._question_pair_diagnostics(),
+                            themeSelectorDiagnostics=self._theme_selector_diagnostics(),
                         )
                         record.fallbackUsed = _fallback_used(record)
                     except Exception as error:
@@ -167,5 +217,6 @@ class EvaluationRunner:
                         )
                     stream.write(record.model_dump_json() + "\n")
                     stream.flush()
-                    records.append(record)
+                    records_by_id[record.id] = record
+            records = list(records_by_id.values())
         return calculate_metrics(dataset, records, out_dir)

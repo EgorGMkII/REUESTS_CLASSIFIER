@@ -1,0 +1,49 @@
+{
+  "datasetVersion": "3.0",
+  "classifierVersion": "2025-10-31",
+  "total": 16,
+  "processed": 16,
+  "successful": 16,
+  "failed": 0,
+  "fallbackCount": 0,
+  "latencyMs": {
+    "p50": 28725.230200012447,
+    "p95": 43456.678449998435
+  },
+  "themes": {
+    "subsetAccuracy": 0.0,
+    "jaccardSamples": 0.34062499999999996,
+    "microPrecision": 0.37142857142857144,
+    "microRecall": 0.6190476190476191,
+    "microF1": 0.4642857142857143,
+    "macroPrecision": 0.2785714285714286,
+    "macroRecall": 0.3142857142857143,
+    "macroF1": 0.29115646258503397
+  },
+  "themeSelection": {
+    "expectedThemeIncludedRate": 0.5625,
+    "hitAt1": 0.625,
+    "hitAt3": 0.8125,
+    "correctWithExtraCount": 9,
+    "avgPredictedThemes": 2.1875
+  },
+  "retrieval": {
+    "recordsWithDiagnostics": 16,
+    "expectedInTop1": 0.4375,
+    "expectedInTop3": 0.625,
+    "expectedInTop10": 0.875,
+    "expectedInTop20": 0.875,
+    "expectedInTop30": 0.875,
+    "expectedInTop50": 0.875,
+    "meanBestRank": 2.5,
+    "mrr": 0.6541666666666666
+  },
+  "questionType": {
+    "accuracy": 0.9375,
+    "macroF1": 0.21839080459770116
+  },
+  "questionSubtype": {
+    "accuracy": 0.5625,
+    "macroF1": 0.30812324929971985
+  }
+}

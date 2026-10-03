@@ -11,8 +11,16 @@ pytest-cache-files-*
 venv
 env
 .env
+.env.*
 
 data/evaluation/runs
+data/evaluation/real*.json
+data/evaluation/hydra_ocr_runs
+data/evaluation/retrieval_query_model_compare
+data/evaluation/test-output
+private-local
+docs/real-*-evaluation-report.*
+*.ipynb
 data/evaluation/ocr_runs
 data/web_uploads
 tools/ocr_lab/runs

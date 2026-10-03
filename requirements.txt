@@ -1,15 +1,6 @@
-pydantic>=1.10
+-r requirements-docker.txt
 python-docx>=1.1
 pytest>=7
-numpy>=1.26
-rank-bm25>=0.2.2
-faiss-cpu>=1.8
-pymorphy3>=2
-razdel>=0.5
-openai>=1
-langchain-openai>=0.2
-fastapi>=0.115
-uvicorn>=0.30
 scikit-learn>=1.5
 matplotlib>=3.9
 pytest-cov>=6

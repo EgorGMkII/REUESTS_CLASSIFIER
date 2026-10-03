@@ -1,66 +1,17 @@
-# Docker запуск
+# Docker и readiness
 
-Контейнер запускает FastAPI backend и web-страницу на стандартном HTTP-порту `80`.
-Внутри контейнера приложение слушает `8000`.
+Полная инструкция находится в [корневом README](../README.md#quick-start-docker-compose).
+Compose использует `.env`, контейнер слушает 8000, порт хоста — 80.
+Runtime содержит PyMuPDF/Pillow и внешний мультимодальный OCR; PaddleOCR не нужен.
 
-## Подготовка
+`GET /health` проверяет процесс. `GET /ready` проверяет загрузку справочников
+и индексов. Ответ 200 не означает, что API-ключ провайдера работает.
 
-Создать `.env` из примера:
+При `Theme indexes are stale or lack themesSha256` перестройте индексы
+существующей CLI-командой из README и перезапустите сервис.
+Файлы сохраняются в bind mount `./data`; обычный `up -d` может оставить прежний процесс.
+После изменения ключа/модели пересоздайте контейнер через `--force-recreate`.
 
-```powershell
-Copy-Item .env.example .env
-```
-
-В `.env` указать реальный `HYDRA_API_KEY`.
-
-Минимальный `.env`:
-
-```env
-HYDRA_API_KEY=...
-HYDRA_BASE_URL=https://api.hydraai.ru/v1
-HYDRA_MODEL=gpt-5-mini
-HYDRA_PREPROCESSOR_MODEL=gpt-5.4-mini
-HYDRA_EMBEDDING_MODEL=text-embedding-3-small
-```
-
-## Запуск
-
-```powershell
-docker compose up --build
-```
-
-Открыть:
-
-```text
-http://127.0.0.1/
-```
-
-Проверка API:
-
-```text
-http://127.0.0.1/health
-http://127.0.0.1/ready
-```
-
-## Что входит в Docker-среду
-
-- backend API;
-- web-страница загрузки PDF;
-- LangChain/OpenAI-зависимости;
-- PyMuPDF/Pillow для преобразования PDF в изображения;
-- OCR через мультимодальную LLM по Hydra/OpenAI-compatible API.
-
-`./data` проброшена в контейнер как volume, поэтому индексы, справочники и OCR-артефакты остаются на хосте.
-
-Локальный PaddleOCR в Docker runtime больше не используется. Старые PaddleOCR-скрипты
-остаются только в `tools/ocr_lab` как лабораторный/диагностический контур.
-
-## Модели
-
-- `HYDRA_MODEL` — основная модель для OCR PDF и классификаторов. По умолчанию `gpt-5-mini`.
-- `HYDRA_PREPROCESSOR_MODEL` — более сильная модель для `LLMTextPreprocessor`.
-  По умолчанию `gpt-5.4-mini`.
-- `HYDRA_EMBEDDING_MODEL` — модель embeddings. По умолчанию `text-embedding-3-small`.
-
-Если нужно удешевить запуск, можно поставить `HYDRA_PREPROCESSOR_MODEL=gpt-5-mini`,
-но качество retrieval-запросов может просесть.
+Приватные датасеты, OCR, PDF и секреты исключены из build context.
+Bind mount всё равно открывает контейнеру локальную `data/`, включая приватные
+файлы, если они там есть.

@@ -41,7 +41,7 @@ def components(selected=None, candidates=None):
     retriever.search.return_value = [candidate()] if candidates is None else candidates
     type_classifier = Mock()
     type_prediction = QuestionTypePrediction(
-        code="3", name="Жалоба", confidence=0.8
+        code="3", name="Жалоба", confidence=0.7
     )
     type_classifier.classify_top_k.return_value = [type_prediction]
     subtype_classifier = Mock()
@@ -100,6 +100,7 @@ def test_pipeline_coordinates_components_and_builds_result():
 def test_pipeline_uses_text_preprocessor_before_normalization():
     preprocessor = Mock()
     preprocessor.prepare.return_value = "Очищенная жалоба про Ёлку"
+    preprocessor.last_type_decision_text = ""
     pipeline, retriever, *_ = components()
     pipeline.text_preprocessor = preprocessor
     pipeline.run("сырой OCR")
@@ -118,7 +119,7 @@ def test_pipeline_builds_subtype_for_each_type_candidate_and_uses_selected_pair(
         QuestionSubtypePrediction(
             code="3.2.1",
             officialCode="Ж2.1",
-            name="Жалоба на действия",
+            name=load_subtype_catalog().by_code()["3.2.1"].name,
             confidence=0.7,
         ),
         QuestionSubtypePrediction(
@@ -129,9 +130,8 @@ def test_pipeline_builds_subtype_for_each_type_candidate_and_uses_selected_pair(
         ),
     ]
     type_classifier.classify_top_k.return_value = type_candidates
-    subtype_classifier.classify_top_k.side_effect = [
-        [subtype_candidates[0]],
-        [subtype_candidates[1]],
+    subtype_classifier.classify_top_k.side_effect = lambda text, kind, k: [
+        subtype_candidates[0] if kind.code == "3" else subtype_candidates[1]
     ]
     pair_selector.select.return_value = QuestionPairCandidate(
         question_type=type_candidates[1],
@@ -141,10 +141,7 @@ def test_pipeline_builds_subtype_for_each_type_candidate_and_uses_selected_pair(
     result = pipeline.run("Прошу принять меры")
 
     assert subtype_classifier.classify_top_k.call_count == 2
-    assert [call.args[1].code for call in subtype_classifier.classify_top_k.call_args_list] == [
-        "3",
-        "2",
-    ]
+    assert {call.args[1].code for call in subtype_classifier.classify_top_k.call_args_list} == {"3", "2"}
     assert [candidate.key for candidate in pipeline.last_question_pair_candidates] == [
         "3|3.2.1",
         "2|2.1.1",
@@ -156,7 +153,7 @@ def test_pipeline_builds_subtype_for_each_type_candidate_and_uses_selected_pair(
 def test_pipeline_builds_two_subtype_candidates_per_type():
     pipeline, _, type_classifier, subtype_classifier, pair_selector, _ = components()
     type_candidate = QuestionTypePrediction(
-        code="2", name=QUESTION_TYPES["2"], confidence=0.8
+        code="2", name=QUESTION_TYPES["2"], confidence=0.79
     )
     definitions = load_subtype_catalog().by_code()
     subtype_candidates = []
@@ -229,12 +226,12 @@ def test_pipeline_uses_slow_path_when_second_type_is_plausible():
     pipeline, _, type_classifier, subtype_classifier, pair_selector, _ = components()
     type_candidates = [
         QuestionTypePrediction(code="3", name=QUESTION_TYPES["3"], confidence=0.93),
-        QuestionTypePrediction(code="2", name=QUESTION_TYPES["2"], confidence=0.72),
+        QuestionTypePrediction(code="2", name=QUESTION_TYPES["2"], confidence=0.76),
     ]
     complaint_subtype = QuestionSubtypePrediction(
         code="3.2.1",
         officialCode="Ж2.1",
-        name="Жалоба на действия",
+        name=load_subtype_catalog().by_code()["3.2.1"].name,
         confidence=0.8,
     )
     definition = load_subtype_catalog().by_code()["2.1.1"]
@@ -245,9 +242,8 @@ def test_pipeline_uses_slow_path_when_second_type_is_plausible():
         confidence=0.7,
     )
     type_classifier.classify_top_k.return_value = type_candidates
-    subtype_classifier.classify_top_k.side_effect = [
-        [complaint_subtype],
-        [statement_subtype],
+    subtype_classifier.classify_top_k.side_effect = lambda text, kind, k: [
+        complaint_subtype if kind.code == "3" else statement_subtype
     ]
     pair_selector.select.return_value = QuestionPairCandidate(
         question_type=type_candidates[1],
@@ -265,7 +261,7 @@ def test_pipeline_uses_slow_path_when_second_type_is_plausible():
     assert result.questionType.code == "2"
 
 
-def test_pipeline_uses_slow_path_for_information_request_with_statement_alternative():
+def test_pipeline_uses_fast_path_for_confident_information_request_with_weak_alternative():
     pipeline, _, type_classifier, subtype_classifier, pair_selector, _ = components()
     type_candidates = [
         QuestionTypePrediction(code="5", name=QUESTION_TYPES["5"], confidence=0.97),
@@ -274,7 +270,7 @@ def test_pipeline_uses_slow_path_for_information_request_with_statement_alternat
     info_subtype = QuestionSubtypePrediction(
         code="-",
         officialCode="-",
-        name="Запрос информации",
+        name=load_subtype_catalog().by_code()["-"].name,
         confidence=0.8,
     )
     definition = load_subtype_catalog().by_code()["2.1.1"]
@@ -296,13 +292,13 @@ def test_pipeline_uses_slow_path_for_information_request_with_statement_alternat
 
     result = pipeline.run("Прошу сообщить сведения для решения жилищной проблемы")
 
-    assert subtype_classifier.classify_top_k.call_count == 2
-    pair_selector.select.assert_called_once()
-    assert [candidate.key for candidate in pipeline.last_question_pair_candidates] == [
-        "5|-",
-        "2|2.1.1",
-    ]
-    assert result.questionType.code == "2"
+    subtype_classifier.classify_top_k.assert_called_once_with(
+        pipeline.last_normalized_type_text, type_candidates[0], k=2
+    )
+    pair_selector.select.assert_not_called()
+    assert [candidate.key for candidate in pipeline.last_question_pair_candidates] == ["5|-"]
+    assert result.questionType.code == "5"
+    assert result.questionSubtype.code == "-"
 
 
 def test_llm_text_preprocessor_returns_normalized_text():
@@ -438,6 +434,7 @@ def test_pipeline_raises_when_no_themes_or_candidates():
 def test_pipeline_uses_multi_query_retrieval_and_merges_candidates():
     preprocessor = Mock()
     preprocessor.prepare.return_value = "Автор просит разобраться с автобусом"
+    preprocessor.last_type_decision_text = ""
     preprocessor.last_retrieval_queries = [
         RetrievalQuery(section="0003", query="пассажирские перевозки автобус"),
         RetrievalQuery(section="0003", query="общественный транспорт остановка"),

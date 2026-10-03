@@ -76,6 +76,18 @@ class QuestionPairDiagnostics(BaseModel):
     questionSubtypeName: str
 
 
+class ThemeSelectorCandidateDiagnostics(BaseModel):
+    code: str
+    role: str = ""
+    matchQuality: str = ""
+    reason: str = ""
+
+
+class ThemeSelectorDiagnostics(BaseModel):
+    selected: list[ThemeSelectorCandidateDiagnostics] = Field(default_factory=list)
+    rejected: list[ThemeSelectorCandidateDiagnostics] = Field(default_factory=list)
+
+
 class PredictionRecord(BaseModel):
     id: str
     prediction: ClassificationResult | None = None
@@ -86,3 +98,4 @@ class PredictionRecord(BaseModel):
     textDiagnostics: TextDiagnostics | None = None
     questionTypeCandidates: list[QuestionTypeDiagnostics] = Field(default_factory=list)
     questionPairCandidates: list[QuestionPairDiagnostics] = Field(default_factory=list)
+    themeSelectorDiagnostics: ThemeSelectorDiagnostics | None = None
